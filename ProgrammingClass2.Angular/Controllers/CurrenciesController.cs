@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/currencies")]
     [ApiController]
     public class CurrenciesController : ControllerBase
     {
