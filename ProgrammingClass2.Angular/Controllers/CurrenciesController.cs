@@ -29,7 +29,6 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpGet("{id}")]
-
         public IActionResult Get(int id)
         {
             var currency = _context.Currencies.Find(id);
@@ -42,7 +41,6 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPost]
-
         public IActionResult Create(Currency currency)
         {
             if (ModelState.IsValid)
@@ -56,7 +54,6 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPut("{id}")]
-
         public IActionResult Update(int id, Currency currency)
         {
             if (ModelState.IsValid)
@@ -65,11 +62,13 @@ namespace ProgrammingClass2.Angular.Controllers
                 {
                     return BadRequest();
                 }
+
                 _context.Currencies.Update(currency);
                 _context.SaveChanges();
 
                 return Ok(currency);
             }
+
             return BadRequest(ModelState);
         }
 
@@ -85,6 +84,7 @@ namespace ProgrammingClass2.Angular.Controllers
 
                 return Ok(currency);
             }
+
             return NotFound();
         }
     }
