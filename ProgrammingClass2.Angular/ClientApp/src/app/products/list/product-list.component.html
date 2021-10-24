@@ -1,0 +1,45 @@
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>
+          Unit Price
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- *ngFor nuynn e inch vor C#-i meji foreach loop-e -->
+      <tr *ngFor="let product of products">
+        <td>
+          {{product.id}}
+        </td>
+        <td>
+          {{product.name}}
+        </td>
+        <td>
+          {{product.description}}
+        </td>
+        <td>
+          {{product.quantity}}
+        </td>
+        <td>
+          {{product.unitPrice}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
