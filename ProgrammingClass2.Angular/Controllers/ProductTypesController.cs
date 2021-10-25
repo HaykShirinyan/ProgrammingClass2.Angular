@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.Controllers
 {
-    [Route("api/productTypes")]
+    [Route("api/product-types")]
     [ApiController]
     public class ProductTypesController : ControllerBase
     {
