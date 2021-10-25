@@ -32,7 +32,7 @@ namespace ProgrammingClass2.Angular.Controllers
         {
             var productType = _context.ProductTypes.Find(id);
 
-            if(productType != null )
+            if (productType != null )
             {
                 return Ok(productType);
             }
@@ -43,7 +43,7 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpPost]
         public IActionResult Create(ProductType productType)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.ProductTypes.Add(productType);
                 _context.SaveChanges();
@@ -57,7 +57,7 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, ProductType productType)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (id != productType.Id)
                 {
@@ -72,12 +72,11 @@ namespace ProgrammingClass2.Angular.Controllers
         }
         
         [HttpDelete("{id}")]
-
         public IActionResult Delete(int id)
         {
             var productType = _context.ProductTypes.Find(id);
 
-            if(productType != null)
+            if (productType != null)
             {
                 _context.ProductTypes.Remove(productType);
                 _context.SaveChanges();
