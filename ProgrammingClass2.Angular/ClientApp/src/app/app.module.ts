@@ -14,6 +14,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ProductListComponent } from './products/list/product-list.component';
 import { CurrencyListComponent } from './currencies/list/currency-list.component';
+import { ProductTypeListComponent } from './productType/list/productType-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CurrencyListComponent } from './currencies/list/currency-list.component
     CounterComponent,
     FetchDataComponent,
     ProductListComponent,
-    CurrencyListComponent
+    CurrencyListComponent,
+    ProductTypeListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,7 +38,8 @@ import { CurrencyListComponent } from './currencies/list/currency-list.component
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
       { path: 'products', component: ProductListComponent },
-      { path: 'currencies', component: CurrencyListComponent }
+      { path: 'currencies', component: CurrencyListComponent },
+      { path: 'productTypes', component: ProductTypeListComponent }
     ])
   ],
   providers: [
