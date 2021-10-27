@@ -39,7 +39,7 @@ import { ProductTypeListComponent } from './productType/list/productType-list.co
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
       { path: 'products', component: ProductListComponent },
       { path: 'currencies', component: CurrencyListComponent },
-      { path: 'productTypes', component: ProductTypeListComponent }
+      { path: 'product-types', component: ProductTypeListComponent }
     ])
   ],
   providers: [

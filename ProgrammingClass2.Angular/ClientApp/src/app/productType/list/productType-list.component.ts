@@ -16,7 +16,7 @@ export class ProductTypeListComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._http.get<ProductType[]>('api/productTypes').subscribe(apiProductTypes => {
+    this._http.get<ProductType[]>('api/product-types').subscribe(apiProductTypes => {
       this.productTypes = apiProductTypes;
     });
   }
