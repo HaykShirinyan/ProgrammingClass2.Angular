@@ -2,29 +2,30 @@
   <table class="table">
     <thead>
       <tr>
-      <th>
-        ID
-      </th>
-      <th>
-        Name
-      </th>
         <th>
-         Description
+          ID
         </th>
-       </tr>
-      </thead>
+        <th>
+          Name
+        </th>
+        <th>
+          Description
+        </th>
+      </tr>
+    </thead>
+
     <tbody>
       <tr *ngFor="let currency of currencies">
         <td>
           {{currency.id}}
-       </td>
+        </td>
         <td>
           {{currency.name}}
-         </td>
+        </td>
         <td>
           {{currency.description}}
-         </td>
-       </tr>
-      </tbody>
-    </table>
-  </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
