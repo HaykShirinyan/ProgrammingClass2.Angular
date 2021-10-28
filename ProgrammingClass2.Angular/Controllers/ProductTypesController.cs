@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/product-types")]
     [ApiController]
-  
-    
     public class ProductTypesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -39,7 +37,7 @@ namespace ProgrammingClass2.Angular.Controllers
                 return Ok(productType);
             }
 
-                return NotFound();
+            return NotFound();
         }
 
         [HttpPost]
@@ -53,7 +51,7 @@ namespace ProgrammingClass2.Angular.Controllers
                 return Ok(productType);
             }
 
-                return BadRequest(ModelState);
+            return BadRequest(ModelState);
         }
 
         [HttpPut("{id}")]
@@ -66,13 +64,13 @@ namespace ProgrammingClass2.Angular.Controllers
                     return BadRequest();
                 }
 
-                   _context.ProductTypes.Update(productType);
-                   _context.SaveChanges();
+                _context.ProductTypes.Update(productType);
+                _context.SaveChanges();
 
-                   return Ok(productType);
+                return Ok(productType);
             }
 
-                return BadRequest(ModelState);
+            return BadRequest(ModelState);
         }
 
         [HttpDelete("{id}")]
@@ -88,8 +86,7 @@ namespace ProgrammingClass2.Angular.Controllers
                  return Ok(productType);
             }
 
-                return NotFound();
+            return NotFound();
         }
-    }
-    
+    }    
 }
