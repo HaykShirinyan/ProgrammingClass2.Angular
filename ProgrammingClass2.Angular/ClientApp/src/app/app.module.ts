@@ -37,8 +37,8 @@ import { ProductTypeListComponent } from './productTypes/list/productType-list.c
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
-      { path: 'products', component: ProductListComponent }
-      { path: 'currencies', component: CurrencyListComponent }
+      { path: 'products', component: ProductListComponent },
+      { path: 'currencies', component: CurrencyListComponent },
       { path: 'productTypes', component: ProductTypeListComponent }
     ])
   ],
