@@ -1,0 +1,44 @@
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>
+          Unit Price
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let currency of currencies">
+        <td>
+          {{currency.id}}
+        </td>
+        <td>
+          {{currency.name}}
+        </td>
+        <td>
+          {{currency.description}}
+        </td>
+        <td>
+          {{currency.quantity}}
+        </td>
+        <td>
+          {{currency.unitPrice}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
