@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ProductType } from "../../shared/models/productType";
 
-
 @Component({
   templateUrl: './productType-list.component.html'
 })

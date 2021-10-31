@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Currency } from "../../shared/models/currency";
 
-
 @Component({
   templateUrl: './currency-list.component.html'
 })
