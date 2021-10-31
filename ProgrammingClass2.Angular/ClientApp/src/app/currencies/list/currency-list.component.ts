@@ -5,7 +5,6 @@ import { Currency } from "../../shared/models/currency";
 @Component({
   templateUrl:'./currency-list.component.html'
 })
-
 export class CurrencyListComponent implements OnInit {
   private readonly _http: HttpClient;
 
@@ -20,5 +19,4 @@ export class CurrencyListComponent implements OnInit {
       this.currencies = apiCurrencies
     });
   }
-
 }
