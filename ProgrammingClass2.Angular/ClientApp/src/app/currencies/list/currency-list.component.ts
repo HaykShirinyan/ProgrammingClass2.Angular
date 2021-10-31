@@ -12,7 +12,6 @@ export class CurrencyListComponent implements OnInit {
   private readonly _http: HttpClient;
 
   public currencies: Currency[];
-  currency: Currency[];
 
   constructor(http: HttpClient) {
     this._http = http;
@@ -21,7 +20,7 @@ export class CurrencyListComponent implements OnInit {
   public ngOnInit(): void {
 
     this._http.get<Currency[]>('api/currencies').subscribe(apiCurrencies => {
-      this.currency = apiCurrencies
+      this.currencies = apiCurrencies
     });
   }
 }

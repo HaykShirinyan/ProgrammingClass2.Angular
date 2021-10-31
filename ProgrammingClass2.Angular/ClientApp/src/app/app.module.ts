@@ -24,7 +24,8 @@ import { CurrencyListComponent } from './currencies/list/currency-list.component
     CounterComponent,
     FetchDataComponent,
     ProductListComponent,
-    ProductTypeListComponent
+    ProductTypeListComponent,
+    CurrencyListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
