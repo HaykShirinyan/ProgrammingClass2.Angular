@@ -12,8 +12,6 @@ namespace ProgrammingClass2.Angular.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
-        internal object currencies;
-
         public DbSet<Product> Products { get; set; } 
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Currency> Currencies { get; set; }
