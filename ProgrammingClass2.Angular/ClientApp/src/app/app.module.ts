@@ -13,8 +13,8 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ProductListComponent } from './products/list/product-list.component';
-import { CurrencyListComponent } from './currencies/list/currency-list.component';
-import { ProductTypeListComponent } from './productType/list/productType-list.component';
+import { CreateProductComponent } from './products/create/create-product.component';
+import { EditProductComponent } from './products/edit/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +24,8 @@ import { ProductTypeListComponent } from './productType/list/productType-list.co
     CounterComponent,
     FetchDataComponent,
     ProductListComponent,
-    CurrencyListComponent,
-    ProductTypeListComponent
+    CreateProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,8 +38,8 @@ import { ProductTypeListComponent } from './productType/list/productType-list.co
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
       { path: 'products', component: ProductListComponent },
-      { path: 'currencies', component: CurrencyListComponent },
-      { path: 'product-types', component: ProductTypeListComponent }
+      { path: 'products/create', component: CreateProductComponent },
+      { path: 'products/edit/:id', component: EditProductComponent }
     ])
   ],
   providers: [
