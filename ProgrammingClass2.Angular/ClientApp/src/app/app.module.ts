@@ -15,6 +15,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { ProductListComponent } from './products/list/product-list.component';
 import { CreateProductComponent } from './products/create/create-product.component';
 import { EditProductComponent } from './products/edit/edit-product.component';
+import { CreateCurrencyComponent } from './currencies/create/create-currency.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditProductComponent } from './products/edit/edit-product.component';
     FetchDataComponent,
     ProductListComponent,
     CreateProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    CreateCurrencyComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,7 +41,8 @@ import { EditProductComponent } from './products/edit/edit-product.component';
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
       { path: 'products', component: ProductListComponent },
       { path: 'products/create', component: CreateProductComponent },
-      { path: 'products/edit/:id', component: EditProductComponent }
+      { path: 'products/edit/:id', component: EditProductComponent },
+      { path: 'currencies/create', component: CreateCurrencyComponent }
     ])
   ],
   providers: [
