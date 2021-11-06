@@ -13,7 +13,7 @@ export class CurrencyService {
     this._http = http;
   }
 
-  public getCurrency(): Promise<Currency[]> {
+  public getCurrencies(): Promise<Currency[]> {
     return this._http.get<Currency[]>('api/currencies').toPromise();
   }
 }

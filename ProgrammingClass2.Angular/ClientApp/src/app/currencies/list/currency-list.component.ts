@@ -16,6 +16,6 @@ export class CurrencyListComponent implements OnInit {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.currencies = await this._currencyService.getCurrency();
+    this.currencies = await this._currencyService.getCurrencies();
   }
 }
