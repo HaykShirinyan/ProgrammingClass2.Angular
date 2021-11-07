@@ -14,6 +14,8 @@ namespace ProgrammingClass2.Angular.Data
     {
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<UnitOfMeasure> UnitOfMeasures { get; set; }
+
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)

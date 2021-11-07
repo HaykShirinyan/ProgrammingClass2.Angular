@@ -15,6 +15,8 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { ProductListComponent } from './products/list/product-list.component';
 import { CreateProductComponent } from './products/create/create-product.component';
 import { EditProductComponent } from './products/edit/edit-product.component';
+import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-measure-list.component';
+import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-unit-of-measure.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { EditProductComponent } from './products/edit/edit-product.component';
     FetchDataComponent,
     ProductListComponent,
     CreateProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    UnitOfMeasureListComponent,
+    CreateUnitOfMeasureComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,7 +43,10 @@ import { EditProductComponent } from './products/edit/edit-product.component';
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
       { path: 'products', component: ProductListComponent },
       { path: 'products/create', component: CreateProductComponent },
-      { path: 'products/edit/:id', component: EditProductComponent }
+      { path: 'products/edit/:id', component: EditProductComponent },
+
+      { path: 'unit-of-measures', component: UnitOfMeasureListComponent },
+      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent }
     ])
   ],
   providers: [

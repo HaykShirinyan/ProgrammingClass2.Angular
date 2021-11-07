@@ -35,7 +35,11 @@
     <None Remove="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <None Remove="ClientApp\src\app\products\list\product-list.component.ts" />
     <None Remove="ClientApp\src\app\shared\models\product.ts" />
+    <None Remove="ClientApp\src\app\shared\models\unit-of-measure.ts" />
     <None Remove="ClientApp\src\app\shared\services\product.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\unit-of-measure.service.ts" />
+    <None Remove="ClientApp\src\app\unit-of-measures\create\create-unit-of-measure.component.ts" />
+    <None Remove="ClientApp\src\app\unit-of-measures\unit-of-measure-list.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,7 +47,11 @@
     <TypeScriptCompile Include="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\list\product-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\product.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\unit-of-measure.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\product.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\unit-of-measure.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\unit-of-measures\create\create-unit-of-measure.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\unit-of-measures\list\unit-of-measure-list.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
