@@ -24,7 +24,7 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var productTypes = _context.Products.ToList();
+            var productTypes = _context.ProductTypes.ToList();
             return Ok(productTypes);
         }
 
