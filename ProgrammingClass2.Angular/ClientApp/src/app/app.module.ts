@@ -17,6 +17,10 @@ import { CreateProductComponent } from './products/create/create-product.compone
 import { EditProductComponent } from './products/edit/edit-product.component';
 import { ProductTypeListComponent } from './product-types/list/product-type-list.component';
 import { CurrencyListComponent } from './currencies/list/currency-list.component';
+import { CreateProductTypeComponent } from './product-types/create/create-product-type.component';
+import { EditProductTypeComponent } from './product-types/edit/edit-product-type.component';
+import { CreateCurrencyComponent } from './currencies/create/create-currency.component';
+import { EditCurrencyComponent } from './currencies/edit/edit-currency.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +29,16 @@ import { CurrencyListComponent } from './currencies/list/currency-list.component
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProductListComponent,
     ProductTypeListComponent,
-    CurrencyListComponent
+    CurrencyListComponent,
     ProductListComponent,
     CreateProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    CreateProductTypeComponent,
+    EditProductTypeComponent,
+    CreateCurrencyComponent,
+    EditCurrencyComponent
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,10 +52,13 @@ import { CurrencyListComponent } from './currencies/list/currency-list.component
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
       { path: 'products', component: ProductListComponent },
       { path: 'products/create', component: CreateProductComponent },
-      { path: 'products/edit/:id', component: EditProductComponent }
-      { path: 'products', component: ProductListComponent },
+      { path: 'products/edit/:id', component: EditProductComponent },
       { path: 'product-types', component: ProductTypeListComponent },
-      { path: 'currencies', component: CurrencyListComponent }
+      { path: 'currencies', component: CurrencyListComponent },
+      { path: 'product-types/create', component: CreateProductTypeComponent },
+      { path: 'product-types/edit/:id', component: EditProductTypeComponent },
+      { path: 'currencies/create', component: CreateCurrencyComponent },
+      { path: 'currencies/edit/:id', component: EditCurrencyComponent},
     ])
   ],
   providers: [
