@@ -14,6 +14,7 @@ namespace ProgrammingClass2.Angular.Data
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Currency> Currencies { get; set; }
+        public DbSet<ProductType> ProductTypes { get; set; }
 
         public ApplicationDbContext(
             DbContextOptions options,
