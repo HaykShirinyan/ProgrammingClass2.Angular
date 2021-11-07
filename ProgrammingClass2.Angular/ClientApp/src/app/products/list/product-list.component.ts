@@ -2,6 +2,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../../shared/models/product";
+import { ProductService } from "../../shared/services/product.service";
 
 // Es mer ProductListComponent pti anpayman avelacnenq AppModule class-i mej
 
@@ -10,21 +11,17 @@ import { Product } from "../../shared/models/product";
 })
 // export nshanakum e public. Nuynn e inch vor C#-i public keyword-e.
 export class ProductListComponent implements OnInit {
-  private readonly _http: HttpClient;
+  private readonly _productService: ProductService;
 
   // [] nshanakum e list.
   public products: Product[];
 
-  constructor(http: HttpClient) {
-    this._http = http;
+  constructor(productService: ProductService) {
+    this._productService = productService;
   }
 
   // ngOnInit kanchvum e erb mer component-e nor bacvum e.
-  public ngOnInit(): void {
-    // HttpClient service-i mijocov kapnvum enq mer API het.
-    // subscribe function-e kanchvum e erb menq tvyalnere API stanum enq.
-    this._http.get<Product[]>('api/products').subscribe(apiProducts => {
-      this.products = apiProducts
-    });
+  public async ngOnInit(): Promise<void> {
+    this.products = await this._productService.getProducts();
   }
 }
