@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\currencies\create\create-currency.component.ts" />
+    <None Remove="ClientApp\src\app\currencies\edit\edit-currency.component.ts" />
     <None Remove="ClientApp\src\app\products\create\create-product.component.ts" />
     <None Remove="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <None Remove="ClientApp\src\app\products\list\product-list.component.ts" />
@@ -44,6 +45,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\currencies\create\create-currency.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\currencies\edit\edit-currency.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\create\create-product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\list\product-list.component.ts" />
