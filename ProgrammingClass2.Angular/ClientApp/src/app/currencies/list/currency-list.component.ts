@@ -1,22 +1,23 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Currency } from "../../shared/models/currency";
+import { CurrencyService } from "../../shared/services/currency.service";
+
+type NewType = Promise<void>;
 
 @Component({
   templateUrl: './currency-list.component.html'
 })
 export class CurrencyListComponent implements OnInit {
-  private readonly _http: HttpClient;
+  private readonly _currencyService: CurrencyService;
 
   public currencies: Currency[];
 
-  constructor(http: HttpClient) {
-    this._http = http;
+  constructor(currencyService: CurrencyService) {
+    this._currencyService = currencyService;
   }
 
-  public ngOnInit(): void {
-    this._http.get<Currency[]>('api/currencies').subscribe(apiCurrencies => {
-      this.currencies = apiCurrencies
-    });
+  public async ngOnInit(): Promise<void> {
+    this.currencies = await this._currencyService.getCurrencies();
   }
 }

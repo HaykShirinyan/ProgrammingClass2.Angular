@@ -1,5 +1,9 @@
 
 <div>
+  <a [routerLink]="['create']" class="btn btn-primary mb-3">
+    Create Currency
+  </a>
+
   <table class="table">
     <thead>
       <tr>
@@ -11,6 +15,9 @@
         </th>
         <th>
           Description
+        </th>
+        <th>
+          Actions
         </th>
       </tr>
     </thead>
@@ -25,6 +32,11 @@
         </td>
         <td>
           {{currency.description}}
+        </td>
+        <td>
+          <a class="btn btn-secondary" [routerLink]="['edit', currency.id]">
+            Edit
+          </a>
         </td>
       </tr>
     </tbody>

@@ -1,5 +1,9 @@
 
 <div>
+  <a [routerLink]="['create']" class="btn btn-primary mb-3">
+    Create Product Type
+  </a>
+
   <table class="table">
     <thead>
       <tr>
@@ -12,19 +16,27 @@
         <th>
           Description
         </th>
+        <th>
+          Actions
+        </th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let productType of productTypes">
+      <tr *ngFor="let currency of currencies">
         <td>
-          {{productType.id}}
+          {{currency.id}}
         </td>
         <td>
-          {{productType.name}}
+          {{currency.name}}
         </td>
         <td>
-          {{productType.description}}
+          {{currency.description}}
+        </td>
+        <td>
+          <a class="btn btn-secondary" [routerLink]="['edit', currency.id]">
+            Edit
+          </a>
         </td>
       </tr>
     </tbody>

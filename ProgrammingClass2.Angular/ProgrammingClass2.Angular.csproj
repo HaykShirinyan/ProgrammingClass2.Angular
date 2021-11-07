@@ -31,21 +31,38 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\currencies\create\create-currency.component.ts" />
+    <None Remove="ClientApp\src\app\currencies\edit\edit-currency.component.ts" />
     <None Remove="ClientApp\src\app\currencies\list\currency-list.component.ts" />
     <None Remove="ClientApp\src\app\products\list\product-list.component.ts" />
+    <None Remove="ClientApp\src\app\productTypes\create\create-productType.component.ts" />
+    <None Remove="ClientApp\src\app\productTypes\edit\edit-productType.component.ts" />
     <None Remove="ClientApp\src\app\productTypes\list\productType-list.component.ts" />
     <None Remove="ClientApp\src\app\shared\models\currency.ts" />
     <None Remove="ClientApp\src\app\shared\models\product.ts" />
     <None Remove="ClientApp\src\app\shared\models\productType.ts" />
+    <None Remove="ClientApp\src\app\shared\services\currency.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\productType.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\currencies\create\create-currency.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\currencies\edit\edit-currency.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\currencies\list\currency-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\list\product-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\productTypes\create\create-productType.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\productTypes\edit\edit-productType.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\productTypes\list\productType-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\currency.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\product.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\productType.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\currency.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\productType.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\currencies\delete\" />
+    <Folder Include="ClientApp\src\app\productTypes\delete\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
