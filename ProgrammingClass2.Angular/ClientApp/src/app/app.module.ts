@@ -15,12 +15,12 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { ProductListComponent } from './products/list/product-list.component';
 import { CreateProductComponent } from './products/create/create-product.component';
 import { EditProductComponent } from './products/edit/edit-product.component';
-import { ProductTypeListComponent } from './productTypes/list/productType-list.component';
 import { CurrencyListComponent } from './currencies/list/currency-list.component';
 import { CreateCurrenyComponent } from './currencies/create/create-currency.component';
 import { EditCurrencyComponent } from './currencies/edit/edit-currency.component';
-import { CreateProductTypeComponent } from './productTypes/create/create-productType.component';
-import { EditProductTypeComponent } from './productTypes/edit/edit-productType.component';
+import { ProductTypeListComponent } from './product-types/list/product-type-list.component';
+import { CreateProductTypeComponent } from './product-types/create/create-product-type.component';
+import { EditProductTypeComponent } from './product-types/edit/edit-product-type.component';
 
 @NgModule({
   declarations: [
@@ -35,11 +35,11 @@ import { EditProductTypeComponent } from './productTypes/edit/edit-productType.c
     ProductTypeListComponent,
     CreateProductTypeComponent,
     EditProductTypeComponent,
-    DeleteProductTypeComponent,
+    //DeleteProductTypeComponent,
     CurrencyListComponent,
     CreateCurrenyComponent,
     EditCurrencyComponent
-    DeleteCurrencyComponent
+    //DeleteCurrencyComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -57,12 +57,11 @@ import { EditProductTypeComponent } from './productTypes/edit/edit-productType.c
       { path: 'productTypes', component: ProductTypeListComponent },
       { path: 'productTypes/create', component: CreateProductTypeComponent },
       { path: 'productTypes/edit/:id', component: EditProductTypeComponent },
-      { path: 'productTypes/delete/:id', component: DeleteProductTypeComponent },
+      //{ path: 'productTypes/delete/:id', component: DeleteProductTypeComponent },
       { path: 'currencies', component: CurrencyListComponent },
       { path: 'currencies/create', component: CreateCurrenyComponent },
       { path: 'currencies/edit/:id', component: EditCurrencyComponent },
-      { path: 'currencies/delete/:id', component: DeleteCurrencyComponent },
-
+      //{ path: 'currencies/delete/:id', component: DeleteCurrencyComponent },
     ])
   ],
   providers: [

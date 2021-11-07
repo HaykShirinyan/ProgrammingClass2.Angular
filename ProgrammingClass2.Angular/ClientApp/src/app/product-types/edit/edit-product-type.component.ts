@@ -5,7 +5,7 @@ import { ProductType } from "../../shared/models/productType";
 import { ProductTypeService } from "../../shared/services/productType.service";
 
 @Component({
-  templateUrl: './edit-productType.component.html'
+  templateUrl: './edit-product-type.component.html'
 })
 export class EditProductTypeComponent implements OnInit {
   private readonly _productTypeService: ProductTypeService;
