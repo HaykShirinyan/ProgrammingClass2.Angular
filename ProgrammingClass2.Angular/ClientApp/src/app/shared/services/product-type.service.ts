@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ProductType } from "../models/productType";
+import { ProductType } from "../models/product-type";
 
 @Injectable({
   providedIn: 'root'
@@ -14,25 +14,25 @@ export class ProductTypeService {
 
   public getProductTypes(): Promise<ProductType[]> {
     return this._http
-      .get<ProductType[]>('api/productTypes')
+      .get<ProductType[]>('api/product-types')
       .toPromise();
   }
 
   public getProductType(id: number): Promise<ProductType> {
     return this._http
-      .get<ProductType>('api/productTypes/' + id)
+      .get<ProductType>('api/product-types/' + id)
       .toPromise();
   }
 
   public createProductType(productType: ProductType): Promise<ProductType> {
     return this._http
-      .post<ProductType>('api/productTypes', productType)
+      .post<ProductType>('api/product-types', productType)
       .toPromise();
   }
 
   public updateProductType(productType: ProductType): Promise<ProductType> {
     return this._http
-      .put<ProductType>('api/productTypes/' + productType.id, productType)
+      .put<ProductType>('api/product-types/' + productType.id, productType)
       .toPromise();
   }
 }

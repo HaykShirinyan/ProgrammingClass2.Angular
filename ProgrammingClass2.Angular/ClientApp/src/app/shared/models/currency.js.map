@@ -1,8 +1,8 @@
 {
   "version": 3,
-  "file": "product.js",
+  "file": "currency.js",
   "sourceRoot": "",
-  "sources": [ "product.ts" ],
+  "sources": [ "currency.ts" ],
   "names": [],
   "mappings": ""
 }

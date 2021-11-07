@@ -1,28 +1,28 @@
-<div *ngIf="productType">
+<div *ngIf="product-type">
   <form #productTypeForm="ngForm" (ngSubmit)="updateProductType(productTypeForm)">
     <div class="form-group">
-      <label for="productType-id">
+      <label for="product-type-id">
         ID
       </label>
-      <input id="productType-id"
+      <input id="product-type-id"
              name="id"
              type="number"
              class="form-control"
              readonly="readonly"
-             [(ngModel)]="productType.id" />
+             [(ngModel)]="product-type.id" />
     </div>
 
     <div class="form-group">
-      <label for="productType-name">
+      <label for="product-type-name">
         Name
       </label>
-      <input id="productType-name"
+      <input id="product-type-name"
              name="name"
              type="text"
              class="form-control"
              required="required"
              maxlength="50"
-             [(ngModel)]="productType.name"
+             [(ngModel)]="product-type.name"
              #name="ngModel" />
       <div *ngIf="name.errors" class="text-danger">
         <div *ngIf="name.errors.required">
@@ -32,14 +32,14 @@
     </div>
 
     <div class="form-group">
-      <label for="productType-description">
+      <label for="product-type-description">
         Description
       </label>
-      <textarea id="productType-description"
+      <textarea id="product-type-description"
                 name="description"
                 class="form-control"
                 maxlength="300"
-                [(ngModel)]="productType.description">
+                [(ngModel)]="product-type.description">
     </textarea>
     </div>
 

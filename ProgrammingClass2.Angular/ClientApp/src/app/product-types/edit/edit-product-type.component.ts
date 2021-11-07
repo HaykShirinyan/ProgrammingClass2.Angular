@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ProductType } from "../../shared/models/productType";
-import { ProductTypeService } from "../../shared/services/productType.service";
+import { ProductType } from "../../shared/models/product-type";
+import { ProductTypeService } from "../../shared/services/product-type.service";
 
 @Component({
   templateUrl: './edit-product-type.component.html'
@@ -33,6 +33,6 @@ export class EditProductTypeComponent implements OnInit {
 
   public async updateProductType(form: NgForm): Promise<void> {
     await this._productTypeService.updateProductType(this.productType);
-    this._router.navigate(['productTypes']);
+    this._router.navigate(['product-types']);
   }
 }

@@ -23,18 +23,18 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let currency of currencies">
+      <tr *ngFor="let productType of productTypes">
         <td>
-          {{currency.id}}
+          {{productType.id}}
         </td>
         <td>
-          {{currency.name}}
+          {{productType.name}}
         </td>
         <td>
-          {{currency.description}}
+          {{productType.description}}
         </td>
         <td>
-          <a class="btn btn-secondary" [routerLink]="['edit', currency.id]">
+          <a class="btn btn-secondary" [routerLink]="['edit', product-type.id]">
             Edit
           </a>
         </td>

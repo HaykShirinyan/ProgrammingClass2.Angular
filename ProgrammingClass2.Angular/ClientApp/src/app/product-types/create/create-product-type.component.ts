@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-import { ProductType } from "../../shared/models/productType";
-import { ProductTypeService } from "../../shared/services/productType.service";
+import { ProductType } from "../../shared/models/product-type";
+import { ProductTypeService } from "../../shared/services/product-type.service";
 
 @Component({
-  templateUrl: './create-productType.component.html'
+  templateUrl: './create-product-type.component.html'
 })
 export class CreateProductTypeComponent {
   private readonly _productTypeService: ProductTypeService;
@@ -21,7 +21,7 @@ export class CreateProductTypeComponent {
   public async createProductType(form: NgForm): Promise<void> {
     if (form.valid) {
       await this._productTypeService.createProductType(this.productType);
-      this._router.navigate(['productTypes']);
+      this._router.navigate(['product-types']);
     }
   }
 }

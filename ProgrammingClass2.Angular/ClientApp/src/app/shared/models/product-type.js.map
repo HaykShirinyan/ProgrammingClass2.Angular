@@ -1,8 +1,8 @@
 {
   "version": 3,
-  "file": "product.js",
+  "file": "product-type.js",
   "sourceRoot": "",
-  "sources": [ "product.ts" ],
+  "sources": [ "product-type.ts" ],
   "names": [],
   "mappings": ""
 }v
