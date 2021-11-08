@@ -18,6 +18,8 @@ import { EditProductComponent } from './products/edit/edit-product.component';
 import { CreateCurrencyComponent } from './currencies/create/create-currency.component';
 import { CurrencyListComponent } from './currencies/list/currency-list.component';
 import { EditCurrencyComponent } from './currencies/edit/edit-currency.component';
+import { ProductTypeListComponent } from './productType/list/productType-list.component';
+import { CreateProductType } from './productType/create/create-productType.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { EditCurrencyComponent } from './currencies/edit/edit-currency.component
     CreateProductComponent,
     EditProductComponent,
     CreateCurrencyComponent,
-    EditCurrencyComponent
+    EditCurrencyComponent,
+    ProductTypeListComponent,
+    CreateProductType
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,7 +52,9 @@ import { EditCurrencyComponent } from './currencies/edit/edit-currency.component
       { path: 'products/edit/:id', component: EditProductComponent },
       { path: 'currencies/create', component: CreateCurrencyComponent },
       { path: 'currencies', component: CurrencyListComponent },
-      { path: 'currencies/edit/:id', component: EditCurrencyComponent }
+      { path: 'currencies/edit/:id', component: EditCurrencyComponent },
+      { path: 'product-types', component: ProductTypeListComponent },
+      { path: 'product-types/create', component: CreateProductType }
     ])
   ],
   providers: [
