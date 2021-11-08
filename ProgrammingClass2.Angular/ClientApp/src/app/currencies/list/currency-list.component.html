@@ -14,7 +14,9 @@
         <th>
           Description
         </th>
-        
+        <th>
+          Action
+        </th>
       </tr>
     </thead>
 
@@ -28,6 +30,11 @@
         </td>
         <td>
           {{currency.description}}
+        </td>
+        <td>
+        <a class="btn btn-secondary" [routerLink]="['edit', currency.id]">
+          Edit
+        </a>
         </td>
       </tr>
     </tbody>
