@@ -322,7 +322,7 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.Currency", b =>
+            modelBuilder.Entity("ProgrammingClass2.Angular.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -360,6 +360,10 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Quantity")
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UnitOfMeasureId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("UnitPrice")
@@ -367,10 +371,12 @@ namespace ProgrammingClass2.Angular.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UnitOfMeasureId");
+
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.ProductType", b =>
+            modelBuilder.Entity("ProgrammingClass2.Angular.Models.UnitOfMeasure", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -388,7 +394,10 @@ namespace ProgrammingClass2.Angular.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductTypes");
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("UnitOfMeasures");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -440,6 +449,15 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ProgrammingClass2.Angular.Models.Product", b =>
+                {
+                    b.HasOne("ProgrammingClass2.Angular.Models.UnitOfMeasure", "UnitOfMeasure")
+                        .WithMany()
+                        .HasForeignKey("UnitOfMeasureId");
+
+                    b.Navigation("UnitOfMeasure");
                 });
 #pragma warning restore 612, 618
         }

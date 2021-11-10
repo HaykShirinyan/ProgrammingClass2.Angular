@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
 using System;
@@ -25,7 +26,11 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var products = _context.Products.ToList();
+            var products = _context
+                .Products
+                .Include(p => p.UnitOfMeasure)
+                .ToList();
+
             return Ok(products);
         }
 

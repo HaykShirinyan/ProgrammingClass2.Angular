@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.Models
 {
-    public class Currency
+    [Index(nameof(UnitOfMeasure.Name), IsUnique = true)]
+    public class UnitOfMeasure
     {
         [Key]
         public int Id { get; set; }
@@ -19,4 +21,3 @@ namespace ProgrammingClass2.Angular.Models
         public string Description { get; set; }
     }
 }
-

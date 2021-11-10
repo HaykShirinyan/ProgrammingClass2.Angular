@@ -21,6 +21,8 @@ import { CreateProductTypeComponent } from './product-types/create/create-produc
 import { EditProductTypeComponent } from './product-types/edit/edit-product-type.component';
 import { CreateCurrencyComponent } from './currencies/create/create-currency.component';
 import { EditCurrencyComponent } from './currencies/edit/edit-currency.component';
+import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-measure-list.component';
+import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-unit-of-measure.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,9 @@ import { EditCurrencyComponent } from './currencies/edit/edit-currency.component
     CreateCurrencyComponent,
     EditCurrencyComponent
 
+    EditProductComponent,
+    UnitOfMeasureListComponent,
+    CreateUnitOfMeasureComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -59,6 +64,10 @@ import { EditCurrencyComponent } from './currencies/edit/edit-currency.component
       { path: 'product-types/edit/:id', component: EditProductTypeComponent },
       { path: 'currencies/create', component: CreateCurrencyComponent },
       { path: 'currencies/edit/:id', component: EditCurrencyComponent},
+      { path: 'products/edit/:id', component: EditProductComponent },
+
+      { path: 'unit-of-measures', component: UnitOfMeasureListComponent },
+      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent }
     ])
   ],
   providers: [
