@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ProductType } from "../../shared/models/productType";
 import { ProductTypeService } from "../../shared/services/productType.service";
@@ -17,8 +18,10 @@ export class CreateProductType {
 
   public productType: ProductType = {};
 
-  public async createProductType(): Promise<void> {
-    await this._productTypeService.createProductType(this.productType);
-    this._router.navigate(["product-types"]);
+  public async createProductType(form: NgForm): Promise<void> {
+    if (form.valid) {
+      await this._productTypeService.createProductType(this.productType);
+      this._router.navigate(["product-types"]);
+    }
 }
 }

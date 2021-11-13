@@ -17,6 +17,6 @@ export class ProductTypeListComponent implements OnInit {
 
   public async ngOnInit(): Promise<void> {
     this.productTypes = await this._productTypeServise.getProductType();
-    };
+    }
   }
 
