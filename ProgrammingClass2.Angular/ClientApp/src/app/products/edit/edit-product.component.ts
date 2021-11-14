@@ -42,7 +42,7 @@ export class EditProductComponent implements OnInit {
 
     this.product = await this._productService.getProduct(id);
     this.unitOfMeasures = await this._unitOfMeasureService.getAll();
-    this.productTypes = await this._productTypeService.getAll();
+    this.productTypes = await this._productTypeService.getProductTypes();
   }
 
   public async updateProduct(form: NgForm): Promise<void> {
