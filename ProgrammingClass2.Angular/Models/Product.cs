@@ -21,5 +21,9 @@ namespace ProgrammingClass2.Angular.Models
         public int Quantity { get; set; }
 
         public decimal UnitPrice { get; set; }
+
+        public int? ProductTypeId { get; set; }
+
+        public ProductType ProductType { get; set; }
     }
 }

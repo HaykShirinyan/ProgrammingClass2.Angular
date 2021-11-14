@@ -18,9 +18,9 @@ import { EditProductComponent } from './products/edit/edit-product.component';
 import { CreateCurrencyComponent } from './currencies/create/create-currency.component';
 import { CurrencyListComponent } from './currencies/list/currency-list.component';
 import { EditCurrencyComponent } from './currencies/edit/edit-currency.component';
-import { ProductTypeListComponent } from './productType/list/productType-list.component';
-import { CreateProductType } from './productType/create/create-productType.component';
-import { EditProductTypeComponent } from './productType/edit/edit-productType.component';
+import { ProductTypeListComponent } from './productType/list/product-type-list.component';
+import { CreateProductTypeComponent } from './productType/create/create-product-type.component';
+import { EditProductTypeComponent } from './productType/edit/edit-product-type.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { EditProductTypeComponent } from './productType/edit/edit-productType.co
     CreateCurrencyComponent,
     EditCurrencyComponent,
     ProductTypeListComponent,
-    CreateProductType,
+    CreateProductTypeComponent,
     EditProductTypeComponent
   ],
   imports: [
@@ -56,7 +56,7 @@ import { EditProductTypeComponent } from './productType/edit/edit-productType.co
       { path: 'currencies', component: CurrencyListComponent },
       { path: 'currencies/edit/:id', component: EditCurrencyComponent },
       { path: 'product-types', component: ProductTypeListComponent },
-      { path: 'product-types/create', component: CreateProductType },
+      { path: 'product-types/create', component: CreateProductTypeComponent },
       { path: 'product-types/edit/:id', component: EditProductTypeComponent }
     ])
   ],

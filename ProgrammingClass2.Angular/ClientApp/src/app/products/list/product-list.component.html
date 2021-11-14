@@ -23,6 +23,9 @@
           Unit Price
         </th>
         <th>
+          Product Type
+          </th>
+        <th>
           Actions
         </th>
       </tr>
@@ -46,6 +49,9 @@
         <td>
           {{product.unitPrice}}
         </td>
+        <td>
+          {{product.productType?.name}}
+          </td>
         <td>
           <a class="btn btn-secondary" [routerLink]="['edit', product.id]">
             Edit

@@ -1,3 +1,4 @@
+import { ProductType } from "./productType";
 
 export interface Product {
   // ? nshanakum e Product object sarqeluc partadir che ? nshanov property-nerin voreve ban nshanakel
@@ -6,4 +7,7 @@ export interface Product {
   description?: string;
   quantity?: number;
   unitPrice?: number;
+
+  productTypeId?: number;
+  productType?: ProductType;
 }

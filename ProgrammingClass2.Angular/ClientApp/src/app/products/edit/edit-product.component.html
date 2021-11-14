@@ -15,6 +15,22 @@
     </div>
 
     <div class="form-group">
+      <label for="product-ProductType">
+        Product Type
+      </label>
+      <select id="product-productType"
+              name="productType"
+              class="form-control"
+              [(ngModel)]="product.productTypeId">
+        <option value="">-- Please Select -- </option>
+
+        <option *ngFor="let productType 0f productTypes" [value]="productType.id">
+          {{productType.id}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
       <label for="product-name">
         Name
       </label>

@@ -16,7 +16,7 @@ export class ProductTypeService {
 
   public getProductType(): Promise<ProductType[]> {
     return this._http
-      .get<ProductType[]>('api/product-types')
+      .get<ProductType[]>('api/product-types')  
       .toPromise();
   }
 

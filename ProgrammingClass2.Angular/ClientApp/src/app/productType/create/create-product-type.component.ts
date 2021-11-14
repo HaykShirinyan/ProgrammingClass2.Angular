@@ -5,9 +5,9 @@ import { ProductType } from "../../shared/models/productType";
 import { ProductTypeService } from "../../shared/services/productType.service";
 
 @Component({
-  templateUrl: './create-productType.component.html'
+  templateUrl: './create-product-type.component.html'
 })
-export class CreateProductType {
+export class CreateProductTypeComponent {
   private readonly _router: Router;
   private readonly _productTypeService: ProductTypeService;
 

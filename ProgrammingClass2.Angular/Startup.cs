@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
+using ProgrammingClass2.Angular.Repositories.Definitions;
+using ProgrammingClass2.Angular.Repositories.Implementations;
 
 namespace ProgrammingClass2.Angular
 {
@@ -47,6 +49,8 @@ namespace ProgrammingClass2.Angular
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
+using ProgrammingClass2.Angular.Repositories.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,28 +14,28 @@ namespace ProgrammingClass2.Angular.Controllers
     [ApiController]
     public class ProductTypesController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IProductTypeRepository _productTypeRepository;
 
-        public ProductTypesController(ApplicationDbContext context) 
+        public ProductTypesController(IProductTypeRepository productTypeRepository) 
         {
-            _context = context;
+            _productTypeRepository = productTypeRepository;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var productType = _context.ProductTypes.ToList();
+            var productType = _productTypeRepository.GetAllProductTypes();
             return Ok(productType);
         }
 
         [HttpGet("{id}")] 
         public IActionResult Get(int id)
         {
-            var productType = _context.ProductTypes.Find(id);
+            var productTypes = _productTypeRepository.Get(id);
 
-            if (productType != null )
+            if (productTypes != null )
             {
-                return Ok(productType);
+                return Ok(productTypes);
             }
 
             return NotFound();
@@ -45,10 +46,9 @@ namespace ProgrammingClass2.Angular.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.ProductTypes.Add(productType);
-                _context.SaveChanges();
+                var created = _productTypeRepository.Create(productType);
 
-                return Ok(productType);
+                return Ok(created);
             }
 
             return BadRequest(ModelState);
@@ -63,10 +63,10 @@ namespace ProgrammingClass2.Angular.Controllers
                 {
                     return BadRequest();
                 }
-                _context.Update(productType);
-                _context.SaveChanges();
+                var updated = _productTypeRepository.Update(productType);
 
-                return Ok(productType);
+
+                return Ok(updated);
             }
             return BadRequest(ModelState);
         }
@@ -74,14 +74,11 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var productType = _context.ProductTypes.Find(id);
+            var deleted = _productTypeRepository.Delete(id);
 
-            if (productType != null)
+            if (deleted != null)
             {
-                _context.ProductTypes.Remove(productType);
-                _context.SaveChanges();
-
-                return Ok(productType);
+                return Ok(deleted);
             }
 
             return NotFound();
