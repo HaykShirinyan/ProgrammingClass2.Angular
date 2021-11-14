@@ -21,6 +21,11 @@ import { EditCurrencyComponent } from './currencies/edit/edit-currency.component
 import { ProductTypeListComponent } from './product-types/list/product-type-list.component';
 import { CreateProductTypeComponent } from './product-types/create/create-product-type.component';
 import { EditProductTypeComponent } from './product-types/edit/edit-product-type.component';
+import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-measure-list.component';
+import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-unit-of-measure.component';
+import { ColorListComponent } from './colors/list/color-list.component';
+import { CreateColorComponent } from './colors/create/create-color.component';
+import { EditColorComponent } from './colors/edit/edit-color.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +43,15 @@ import { EditProductTypeComponent } from './product-types/edit/edit-product-type
     //DeleteProductTypeComponent,
     CurrencyListComponent,
     CreateCurrenyComponent,
-    EditCurrencyComponent
-    //DeleteCurrencyComponent
+    EditCurrencyComponent,
+    //DeleteCurrencyComponent,
+    UnitOfMeasureListComponent,
+    CreateUnitOfMeasureComponent,
+    ColorListComponent,
+    CreateColorComponent,
+    EditColorComponent
+
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -62,6 +74,11 @@ import { EditProductTypeComponent } from './product-types/edit/edit-product-type
       { path: 'currencies/create', component: CreateCurrenyComponent },
       { path: 'currencies/edit/:id', component: EditCurrencyComponent },
       //{ path: 'currencies/delete/:id', component: DeleteCurrencyComponent },
+      { path: 'unit-of-measures', component: UnitOfMeasureListComponent },
+      { path: 'unit-of-measure/create', component: CreateUnitOfMeasureComponent },
+      { path: 'colors', component: ColorListComponent },
+      { path: 'colors/create', component: CreateColorComponent },
+      { path: 'colors/edit/:id', component: EditColorComponent }
     ])
   ],
   providers: [

@@ -25,12 +25,19 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\currencies\delete\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\currencies\delete\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\currencies\delete\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\currencies\delete\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\colors\create\create-color.component.ts" />
+    <None Remove="ClientApp\src\app\colors\edit\edit-color.component.ts" />
+    <None Remove="ClientApp\src\app\colors\list\color-list.component.ts" />
     <None Remove="ClientApp\src\app\currencies\create\create-currency.component.ts" />
     <None Remove="ClientApp\src\app\currencies\edit\edit-currency.component.ts" />
     <None Remove="ClientApp\src\app\currencies\list\currency-list.component.ts" />
@@ -38,14 +45,19 @@
     <None Remove="ClientApp\src\app\product-types\edit\edit-product-type.component.ts" />
     <None Remove="ClientApp\src\app\product-types\list\product-type-list.component.ts" />
     <None Remove="ClientApp\src\app\products\list\product-list.component.ts" />
+    <None Remove="ClientApp\src\app\shared\models\color.ts" />
     <None Remove="ClientApp\src\app\shared\models\currency.ts" />
     <None Remove="ClientApp\src\app\shared\models\product-type.ts" />
     <None Remove="ClientApp\src\app\shared\models\product.ts" />
+    <None Remove="ClientApp\src\app\shared\services\color.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\currency.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\product-type.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\colors\create\create-color.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\colors\edit\edit-color.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\colors\list\color-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\currencies\create\create-currency.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\currencies\edit\edit-currency.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\currencies\list\currency-list.component.ts" />
@@ -53,15 +65,16 @@
     <TypeScriptCompile Include="ClientApp\src\app\product-types\create\create-product-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product-types\edit\edit-product-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product-types\list\product-type-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\color.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\currency.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\product.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\product-type.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\color.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\currency.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\product-type.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\currencies\delete\" />
     <Folder Include="ClientApp\src\app\product-types\delete\" />
   </ItemGroup>
 

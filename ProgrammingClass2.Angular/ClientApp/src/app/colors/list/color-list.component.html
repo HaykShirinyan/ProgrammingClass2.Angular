@@ -1,0 +1,44 @@
+
+<div>
+  <a [routerLink]="['create']" class="btn btn-primary mb-3">
+    Create Color
+  </a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let color of colors">
+        <td>
+          {{color.id}}
+        </td>
+        <td>
+          {{color.name}}
+        </td>
+        <td>
+          {{color.description}}
+        </td>
+        <td>
+          <a class="btn btn-secondary" [routerLink]="['edit', color.id]">
+            Edit
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

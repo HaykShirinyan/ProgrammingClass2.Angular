@@ -1,3 +1,4 @@
+import { ProductType } from "./product-type";
 import { UnitOfMeasure } from "./unit-of-measure";
 
 export interface Product {
@@ -10,4 +11,7 @@ export interface Product {
 
   unitOfMeasureId?: number;
   unitOfMeasure?: UnitOfMeasure;
+
+  productTypeId?: number;
+  productType?: ProductType;
 }
