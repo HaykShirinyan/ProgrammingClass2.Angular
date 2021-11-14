@@ -26,22 +26,23 @@ export class CreateProductComponent implements OnInit {
   constructor(
     productService: ProductService,
     router: Router,
-    unitOfMeasureService: UnitOfMeasureService
+    unitOfMeasureService: UnitOfMeasureService,
+    productTypeService: ProductTypeService
   ) {
-  constructor(productService: ProductService, router: Router, productTypeService: ProductTypeService) {
+     
     this._productService = productService;
     this._router = router;
-    this._unitOfMeasureService = unitOfMeasureService;
+      this._unitOfMeasureService = unitOfMeasureService;
+      this._productTypeService = productTypeService;
   }
 
   public async ngOnInit(): Promise<void> {
     this.unitOfMeasures = await this._unitOfMeasureService.getAll();
-    this._productTypeService = productTypeService;
+    this.productTypes = await this._productTypeService.getProductType();
+
   }
 
-  public async ngOnInit(): Promise<void> {
-    this.productTypes = await this._productTypeService.getProductType();
-  }
+  
   public async createProduct(form: NgForm): Promise<void> {
     if (form.valid) {
       await this._productService.createProduct(this.product);

@@ -39,7 +39,7 @@ import { EditProductTypeComponent } from './productType/edit/edit-product-type.c
     EditCurrencyComponent,
     ProductTypeListComponent,
     CreateProductTypeComponent,
-    EditProductTypeComponent
+    EditProductTypeComponent,
     EditProductComponent,
     UnitOfMeasureListComponent,
     CreateUnitOfMeasureComponent
@@ -62,7 +62,7 @@ import { EditProductTypeComponent } from './productType/edit/edit-product-type.c
       { path: 'currencies/edit/:id', component: EditCurrencyComponent },
       { path: 'product-types', component: ProductTypeListComponent },
       { path: 'product-types/create', component: CreateProductTypeComponent },
-      { path: 'product-types/edit/:id', component: EditProductTypeComponent }
+      { path: 'product-types/edit/:id', component: EditProductTypeComponent },
       { path: 'products/edit/:id', component: EditProductComponent },
 
       { path: 'unit-of-measures', component: UnitOfMeasureListComponent },

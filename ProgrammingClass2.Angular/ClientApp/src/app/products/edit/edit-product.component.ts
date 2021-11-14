@@ -25,8 +25,7 @@ export class EditProductComponent implements OnInit {
   constructor(
     productService: ProductService,
     activeRoute: ActivatedRoute,
-    router: Router, productTypeService: ProductTypeService
-    router: Router,
+    router: Router, productTypeService: ProductTypeService,
     unitOfMeasureService: UnitOfMeasureService
   ) {
     this._productService = productService;
