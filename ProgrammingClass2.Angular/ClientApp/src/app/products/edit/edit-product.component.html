@@ -24,7 +24,7 @@
               [(ngModel)]="product.productTypeId">
         <option value="">-- Please Select -- </option>
 
-        <option *ngFor="let productType 0f productTypes" [value]="productType.id">
+        <option *ngFor="let productType of productTypes" [value]="productType.id">
           {{productType.id}}
         </option>
       </select>
