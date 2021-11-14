@@ -26,6 +26,9 @@
           Unit of Measure
         </th>
         <th>
+          Product Type
+        </th>
+        <th>
           Actions
         </th>
       </tr>
@@ -51,6 +54,9 @@
         </td>
         <td>
           {{product.unitOfMeasure?.name}}
+        </td>
+        <td>
+          {{product.productType?.name}}
         </td>
         <td>
           <a class="btn btn-secondary" [routerLink]="['edit', product.id]">

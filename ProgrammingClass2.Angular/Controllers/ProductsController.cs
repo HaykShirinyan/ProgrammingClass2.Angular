@@ -29,6 +29,7 @@ namespace ProgrammingClass2.Angular.Controllers
             var products = _context
                 .Products
                 .Include(p => p.UnitOfMeasure)
+                .Include(p => p.ProductType)
                 .ToList();
 
             return Ok(products);

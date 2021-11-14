@@ -6,6 +6,12 @@ import { ProductType } from "../models/product-type";
   providedIn: 'root'
 })
 export class ProductTypeService {
+  getAll(): ProductType[] | PromiseLike<ProductType[]> {
+      throw new Error("Method not implemented.");
+  }
+  getAll(): ProductType[] | PromiseLike<ProductType[]> {
+      throw new Error("Method not implemented.");
+  }
   private readonly _http: HttpClient;
 
   constructor(http: HttpClient) {
