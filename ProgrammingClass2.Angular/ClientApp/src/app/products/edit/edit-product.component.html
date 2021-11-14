@@ -89,4 +89,78 @@
       </button>
     </div>
   </form>
+
+  <div>
+    <h2>
+      Categories
+    </h2>
+
+    <div class="form-group">
+      <label for="selected-category">
+        Categories
+      </label>
+      <div class="input-group">
+        <select id="selected-category"
+                name="selectedCategory"
+                class="form-control"
+                [(ngModel)]="selectedCategory">
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{category.name}}
+          </option>
+        </select>
+
+        <div class="input-group-append">
+          <!--
+            (click) kanchvum e erb user-e sxmum e ays button-e.
+            (click) event-i mej karaq component-i mejic cankacac public function kanchel
+          -->
+          <button type="button" class="btn btn-primary" (click)="addCategory()">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let productCategory of productCategories">
+          <td>
+            {{productCategory.category.id}}
+          </td>
+          <td>
+            {{productCategory.category.name}}
+          </td>
+          <td>
+            {{productCategory.category.description}}
+          </td>
+          <td>
+            <!--
+              (click) kanchvum e erb user-e sxmum e ays button-e.
+              (click) event-i mej karaq component-i mejic cankacac public function kanchel
+            -->
+            <button type="button" class="btn btn-secondary" (click)="deleteCategory(productCategory.category.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
