@@ -21,5 +21,9 @@ namespace ProgrammingClass2.Angular.Models
         public int Quantity { get; set; }
 
         public decimal UnitPrice { get; set; }
+
+        // UnitOfMeasure table-i foreign key
+        public int? UnitOfMeasureId { get; set; }
+        public UnitOfMeasure UnitOfMeasure { get; set; }
     }
 }

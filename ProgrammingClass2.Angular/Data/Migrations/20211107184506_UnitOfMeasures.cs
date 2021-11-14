@@ -2,12 +2,12 @@
 
 namespace ProgrammingClass2.Angular.Data.Migrations
 {
-    public partial class ProductTypes : Migration
+    public partial class UnitOfMeasures : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ProductTypes",
+                name: "UnitOfMeasures",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -17,14 +17,20 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductTypes", x => x.Id);
+                    table.PrimaryKey("PK_UnitOfMeasures", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UnitOfMeasures_Name",
+                table: "UnitOfMeasures",
+                column: "Name",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProductTypes");
+                name: "UnitOfMeasures");
         }
     }
 }

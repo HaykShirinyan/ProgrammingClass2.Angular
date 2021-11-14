@@ -10,8 +10,8 @@ using ProgrammingClass2.Angular.Data;
 namespace ProgrammingClass2.Angular.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211019163307_ProductTypes")]
-    partial class ProductTypes
+    [Migration("20211107184506_UnitOfMeasures")]
+    partial class UnitOfMeasures
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -351,7 +351,7 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.ProductType", b =>
+            modelBuilder.Entity("ProgrammingClass2.Angular.Models.UnitOfMeasure", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -369,7 +369,10 @@ namespace ProgrammingClass2.Angular.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductTypes");
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("UnitOfMeasures");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
