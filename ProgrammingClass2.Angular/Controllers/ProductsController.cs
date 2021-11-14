@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
+using ProgrammingClass2.Angular.Repositories.Definitions;
+using ProgrammingClass2.Angular.Repositories.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,21 +17,18 @@ namespace ProgrammingClass2.Angular.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IProductRepository _productRepository;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(IProductRepository productRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
         }
 
         // /api/products
         [HttpGet]
         public IActionResult Index()
         {
-            var products = _context
-                .Products
-                .Include(p => p.UnitOfMeasure)
-                .ToList();
+            var products = _productRepository.GetAll();
 
             return Ok(products);
         }
@@ -38,7 +37,7 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var product = _context.Products.Find(id);
+            var product = _productRepository.Get(id);
 
             if (product != null)
             {
@@ -54,10 +53,9 @@ namespace ProgrammingClass2.Angular.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Products.Add(product);
-                _context.SaveChanges();
+                var created = _productRepository.Create(product);
 
-                return Ok(product);
+                return Ok(created);
             }
 
             // BadRequest(ModelState) het enq veradardznum erb ModelStat valid chi.
@@ -77,10 +75,9 @@ namespace ProgrammingClass2.Angular.Controllers
                     return BadRequest();
                 }
 
-                _context.Products.Update(product);
-                _context.SaveChanges();
+                var updated = _productRepository.Update(product);
 
-                return Ok(product);
+                return Ok(updated);
             }
 
             // BadRequest(ModelState) het enq veradardznum erb ModelStat valid chi.
@@ -92,14 +89,11 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var product = _context.Products.Find(id);
+            var deleted = _productRepository.Delete(id);
 
-            if (product != null)
+            if (deleted != null)
             {
-                _context.Products.Remove(product);
-                _context.SaveChanges();
-
-                return Ok(product);
+                return Ok(deleted);
             }
 
             return NotFound();

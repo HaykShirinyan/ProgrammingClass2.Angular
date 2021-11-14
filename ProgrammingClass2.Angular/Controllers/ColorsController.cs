@@ -1,6 +1,5 @@
-﻿ using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
 using System;
@@ -10,43 +9,42 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.Controllers
 {
-    [Route("api/product-types")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ProductTypesController : ControllerBase
+    public class ColorsController : ControllerBase
     {
-        private readonly IProductTypeRepository _productTypeRepository;
-
-        public ProductTypesController(IProductTypeRepository productTypeRepository)
+        private readonly IColorRepository _colorRepository;
+        public ColorsController(IColorRepository colorRepository)
         {
-           _productTypeRepository = productTypeRepository;
+            _colorRepository = colorRepository;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var productTypes = _productTypeRepository.GetAll();
-            return Ok(productTypes);
+            var colors = _colorRepository.GetAll();
+            return Ok(colors);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
-        { 
-            var productType = _productTypeRepository.Get(id);
+        {
+            var Color = _colorRepository.Get(id);
 
-            if (productType != null)
+            if (Color != null)
             {
-                return Ok(productType);
+                return Ok(Color);
             }
 
             return NotFound();
         }
 
         [HttpPost]
-        public IActionResult Create(ProductType productType)
+        public IActionResult Create(Collor color)
         {
             if (ModelState.IsValid)
             {
-                var created = _productTypeRepository.Create(productType);
+                var created = _colorRepository.Create(color);
 
                 return Ok(created);
             }
@@ -55,16 +53,16 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, ProductType productType)
+        public IActionResult Update(int id, Collor color)
         {
             if (ModelState.IsValid)
             {
-                if (id != productType.Id)
+                if (id != color.Id)
                 {
                     return BadRequest();
                 }
 
-                var updated = _productTypeRepository.Update(productType);
+                var updated = _colorRepository.Update(color);
 
                 return Ok(updated);
             }
@@ -75,14 +73,15 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var deleted = _productTypeRepository.Delete(id);
+            var deleted = _colorRepository.Delete(id);
 
             if (deleted != null)
             {
-                 return Ok(deleted);
+                return Ok(deleted);
             }
 
             return NotFound();
         }
-    }    
+    }
 }
+

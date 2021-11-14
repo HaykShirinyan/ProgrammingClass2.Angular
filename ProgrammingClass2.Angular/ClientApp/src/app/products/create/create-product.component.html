@@ -69,6 +69,38 @@
     </select>
   </div>
 
+  <div class="form-group">
+    <label for="currency">
+      Currency
+    </label>
+    <select id="currency"
+            name="currency"
+            class="form-control"
+            [(ngModel)]="product.currencyId">
+      <option value="">-- Please Select --</option>
+
+      <option *ngFor="let item of currencies" [value]="item.id">
+        {{item.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="product-type">
+      Product Type
+    </label>
+    <select id="product-type"
+            name="productType"
+            class="form-control"
+            [(ngModel)]="product.productTypeId">
+      <option value="">-- Please Select --</option>
+
+      <option *ngFor="let item of productTypes" [value]="item.id">
+        {{item.name}}
+      </option>
+    </select>
+  </div>
+
   <div class="text-center">
     <button type="submit" class="btn btn-primary">
       Create

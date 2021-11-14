@@ -1,8 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Currency } from "../../shared/models/currency";
 import { Product } from "../../shared/models/product";
+import { ProductType } from "../../shared/models/product-type";
 import { UnitOfMeasure } from "../../shared/models/unit-of-measure";
+import { CurrencyService } from "../../shared/services/currency.service";
+import { ProductTypeService } from "../../shared/services/product-type.service";
 import { ProductService } from "../../shared/services/product.service";
 import { UnitOfMeasureService } from "../../shared/services/unit-of-measure.service";
 
@@ -13,23 +17,33 @@ export class CreateProductComponent implements OnInit {
   private readonly _productService: ProductService;
   private readonly _router: Router;
   private readonly _unitOfMeasureService: UnitOfMeasureService;
+  private readonly _currencyService: CurrencyService;
+  private readonly _productTypeService: ProductTypeService;
 
   // {} nshanakum e datark object.
   public product: Product = {};
   public unitOfMeasures: UnitOfMeasure[] = [];
+  public currencies: Currency[] = [];
+  public productTypes: ProductType[] = [];
 
   constructor(
     productService: ProductService,
     router: Router,
-    unitOfMeasureService: UnitOfMeasureService
+    unitOfMeasureService: UnitOfMeasureService,
+    currencyService: CurrencyService,
+    productTypeService: ProductTypeService,
   ) {
     this._productService = productService;
     this._router = router;
     this._unitOfMeasureService = unitOfMeasureService;
+    this._currencyService = currencyService;
+    this._productTypeService = productTypeService;
   }
 
   public async ngOnInit(): Promise<void> {
     this.unitOfMeasures = await this._unitOfMeasureService.getAll();
+    this.currencies = await this._currencyService.getCurrencies();
+    this.productTypes = await this._productTypeService.getProductTypes();
   }
 
   public async createProduct(form: NgForm): Promise<void> {

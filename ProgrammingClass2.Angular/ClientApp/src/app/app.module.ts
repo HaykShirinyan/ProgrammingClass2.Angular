@@ -23,6 +23,9 @@ import { CreateCurrencyComponent } from './currencies/create/create-currency.com
 import { EditCurrencyComponent } from './currencies/edit/edit-currency.component';
 import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-measure-list.component';
 import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-unit-of-measure.component';
+import { CreateColorComponent } from './colors/create/create-color.component';
+import { EditColorComponent } from './colors/edit/edit-color.component';
+import { ColorListComponent } from './colors/list/color-list.component';
 
 @NgModule({
   declarations: [
@@ -39,11 +42,12 @@ import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-u
     CreateProductTypeComponent,
     EditProductTypeComponent,
     CreateCurrencyComponent,
-    EditCurrencyComponent
-
-    EditProductComponent,
+    EditCurrencyComponent,
     UnitOfMeasureListComponent,
-    CreateUnitOfMeasureComponent
+    CreateUnitOfMeasureComponent,
+    CreateColorComponent,
+    EditColorComponent,
+    ColorListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -55,19 +59,25 @@ import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-u
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
+
       { path: 'products', component: ProductListComponent },
       { path: 'products/create', component: CreateProductComponent },
       { path: 'products/edit/:id', component: EditProductComponent },
+
       { path: 'product-types', component: ProductTypeListComponent },
-      { path: 'currencies', component: CurrencyListComponent },
       { path: 'product-types/create', component: CreateProductTypeComponent },
       { path: 'product-types/edit/:id', component: EditProductTypeComponent },
+
+      { path: 'currencies', component: CurrencyListComponent },
       { path: 'currencies/create', component: CreateCurrencyComponent },
       { path: 'currencies/edit/:id', component: EditCurrencyComponent},
-      { path: 'products/edit/:id', component: EditProductComponent },
 
       { path: 'unit-of-measures', component: UnitOfMeasureListComponent },
-      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent }
+      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent },
+
+      { path: 'colors', component: ColorListComponent },
+      { path: 'colors/create', component: CreateColorComponent },
+      { path: 'colors/edit/:id', component: EditColorComponent },
     ])
   ],
   providers: [

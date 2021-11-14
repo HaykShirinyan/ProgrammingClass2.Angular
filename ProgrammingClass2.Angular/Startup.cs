@@ -52,6 +52,10 @@ namespace ProgrammingClass2.Angular
 
             // Ayspes grancum enq mer service-nere, vorpeszi karoxananq controller-nerei contructor-neri mej dranq pahanjenq.
             services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
+            services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICurrencyRepository, CurrencyRepository>();
+            services.AddTransient<IColorRepository, ColorRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
