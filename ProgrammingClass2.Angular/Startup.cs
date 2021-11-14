@@ -50,6 +50,9 @@ namespace ProgrammingClass2.Angular
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            // Ayspes grancum enq mer service-nere, vorpeszi karoxananq controller-nerei contructor-neri mej dranq pahanjenq.
+            services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
+
             services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
         }
 

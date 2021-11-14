@@ -26,6 +26,11 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            var products = _context
+                .Products
+                .Include(p => p.UnitOfMeasure)
+                .ToList();
+
             var products = _context.Products.Include(p => p.ProductType).ToList();
             return Ok(products);
         }

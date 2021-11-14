@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.Models
 {
-    public class Product
+    [Index(nameof(UnitOfMeasure.Name), IsUnique = true)]
+    public class UnitOfMeasure
     {
         [Key]
         public int Id { get; set; }
@@ -17,17 +19,5 @@ namespace ProgrammingClass2.Angular.Models
 
         [StringLength(300)]
         public string Description { get; set; }
-
-        public int Quantity { get; set; }
-
-        public decimal UnitPrice { get; set; }
-
-        // UnitOfMeasure table-i foreign key
-        public int? UnitOfMeasureId { get; set; }
-        public UnitOfMeasure UnitOfMeasure { get; set; }
-
-        public int? ProductTypeId { get; set; }
-
-        public ProductType ProductType { get; set; }
     }
 }

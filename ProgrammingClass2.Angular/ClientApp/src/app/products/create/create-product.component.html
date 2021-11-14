@@ -54,6 +54,22 @@
   </div>
 
   <div class="form-group">
+    <label for="product-uom">
+      Unit of Measure
+    </label>
+    <select id="product-uom"
+            name="uom"
+            class="form-control"
+            [(ngModel)]="product.unitOfMeasureId">
+      <option value="">-- Please Select --</option>
+
+      <option *ngFor="let uom of unitOfMeasures" [value]="uom.id">
+        {{uom.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
     <label for="product-ProductType">
       Product Type
       </label>
