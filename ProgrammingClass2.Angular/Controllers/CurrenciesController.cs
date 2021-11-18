@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.Controllers
 {
-    [Route("api/[currencies]")]
+    [Route("api/currencies")]
     [ApiController]
     public class CurrenciesController : ControllerBase
     {
@@ -54,7 +54,7 @@ namespace ProgrammingClass2.Angular.Controllers
             return BadRequest(ModelState);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Update(int id, Currency currency)
         {
             if (ModelState.IsValid)

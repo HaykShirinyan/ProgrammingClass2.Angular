@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.Controllers
 {
-    [Route("api/[product-types]")]
+    [Route("api/product-types")]
     [ApiController]
     public class ProductTypesController : ControllerBase
     {
@@ -26,7 +26,7 @@ namespace ProgrammingClass2.Angular.Controllers
             return Ok(productTypes);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var productType = _context.ProductTypes.Find(id);
@@ -53,7 +53,7 @@ namespace ProgrammingClass2.Angular.Controllers
             return BadRequest(ModelState);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Update(int id, ProductType productType)
         {
             if (ModelState.IsValid)

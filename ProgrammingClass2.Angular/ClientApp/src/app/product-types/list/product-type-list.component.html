@@ -1,0 +1,43 @@
+<div>
+  <a [routerLink]="['create']" class="btn btn-primary mb-3">
+    Create Product Type
+  </a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor = "let productType of productTypes">
+        <td>
+          {{productType.id}}
+        </td>
+        <td>
+          {{productType.name}}
+        </td>
+        <td>
+          {{productType.description}}
+        </td>
+        <td>
+          <a class="btn btn-secondary" [routerLink]="['edit', productType.id]">
+            Edit
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
