@@ -56,6 +56,8 @@ namespace ProgrammingClass2.Angular
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
             services.AddTransient<IColorRepository, ColorRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

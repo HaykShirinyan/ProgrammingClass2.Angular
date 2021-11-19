@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingClass2.Angular.Data;
 
 namespace ProgrammingClass2.Angular.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211114184715_ProductCategories")]
+    partial class ProductCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -322,48 +324,6 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.Collor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Collors");
-                });
-
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.Currency", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Currencies");
-                });
-
             modelBuilder.Entity("ProgrammingClass2.Angular.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -392,9 +352,6 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CurrencyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
@@ -403,9 +360,6 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<int?>("ProductTypeId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -418,37 +372,9 @@ namespace ProgrammingClass2.Angular.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CurrencyId");
-
-                    b.HasIndex("ProductTypeId");
-
                     b.HasIndex("UnitOfMeasureId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.ProductType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("ProgrammingClass2.Angular.Models.ProductCategory", b =>
@@ -543,21 +469,9 @@ namespace ProgrammingClass2.Angular.Data.Migrations
 
             modelBuilder.Entity("ProgrammingClass2.Angular.Models.Product", b =>
                 {
-                    b.HasOne("ProgrammingClass2.Angular.Models.Currency", "Currency")
-                        .WithMany()
-                        .HasForeignKey("CurrencyId");
-
-                    b.HasOne("ProgrammingClass2.Angular.Models.ProductType", "ProductType")
-                        .WithMany()
-                        .HasForeignKey("ProductTypeId");
-
                     b.HasOne("ProgrammingClass2.Angular.Models.UnitOfMeasure", "UnitOfMeasure")
                         .WithMany()
                         .HasForeignKey("UnitOfMeasureId");
-
-                    b.Navigation("Currency");
-
-                    b.Navigation("ProductType");
 
                     b.Navigation("UnitOfMeasure");
                 });
