@@ -20,11 +20,7 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
         public List<ProductType> GetAllProductTypes()
         {
             return _context.ProductTypes.ToList();
-        }
 
-        public ProductType Get(int id)
-        {
-            return _context.ProductTypes.Find(id);
         }
 
         public ProductType Create(ProductType productType)
@@ -33,6 +29,11 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
             _context.SaveChanges();
 
             return productType;
+        }
+
+        public ProductType Get(int id)
+        {
+            return _context.ProductTypes.Find(id);
         }
 
         public ProductType Update(ProductType productType)
