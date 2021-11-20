@@ -23,6 +23,8 @@ namespace ProgrammingClass2.Angular.Data
         public DbSet<ProductType> ProductTypes { get; set; }
 
         public DbSet<Currency> Currencies { get; set; }
+
+        public DbSet<ProductCurrency> ProductCurrencies { get; set; }
         public ApplicationDbContext(
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
@@ -34,6 +36,7 @@ namespace ProgrammingClass2.Angular.Data
             base.OnModelCreating(builder);
 
             builder.Entity<ProductCategory>().HasKey(p => new { p.ProductId, p.CategoryId });
+            builder.Entity<ProductCurrency>().HasKey(p => new { p.ProductId, p.CurrencyId });
         }
     }
 }

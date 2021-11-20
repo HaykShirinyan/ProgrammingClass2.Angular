@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
+using ProgrammingClass2.Angular.Repositories.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,47 +15,45 @@ namespace ProgrammingClass2.Angular.Controllers
     [ApiController]
     public class CurrenciesController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ICurrencyRepository _currencyRepository;
 
-        public CurrenciesController(ApplicationDbContext context)
+        public CurrenciesController(ICurrencyRepository currencyRepository)
         {
-            _context = context;
+            _currencyRepository = currencyRepository;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var currencies = _context.Currencies.ToList();
+            var currencies = await _currencyRepository.GetAllAsync();
             return Ok(currencies);
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var currency = _context.Currencies.Find(id);
+            var currency = await _currencyRepository.GetAsync(id);
 
-            if (currency != null)
+            if (currency == null)
             {
-                return Ok(currency);
+                return NotFound();
             }
-            return NotFound();
+            return Ok(currency);
         }
 
         [HttpPost]
-        public IActionResult Create(Currency currency)
+        public async Task<IActionResult> CreateAsync(Currency currency)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                _context.Update(currency);
-                _context.SaveChanges();
-
-                return Ok(currency);
+                var added = await _currencyRepository.AddAsync(currency);
+                return Ok(added);
             }
-            return BadRequest(ModelState);
+            return BadRequest();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Currency currency)
+        public async Task<IActionResult> UpdateAsync(int id, Currency currency)
         {
             if (ModelState.IsValid)
             {
@@ -62,30 +61,24 @@ namespace ProgrammingClass2.Angular.Controllers
                 {
                     return BadRequest();
                 }
-
-                _context.Currencies.Update(currency);
-                _context.SaveChanges();
-
-                return Ok(currency);
+                var updated = _currencyRepository.UpdateAsync(currency);
+                return Ok(updated);
             }
 
             return BadRequest(ModelState);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var currency = _context.Currencies.Find(id);
+            var deleted = await _currencyRepository.DeleteAsync(id);
 
-            if (currency != null)
+            if (deleted == null)
             {
-                _context.Currencies.Remove(currency);
-                _context.SaveChanges();
-
-                return Ok(currency);
+                return NotFound();
             }
 
-            return NotFound();
+            return Ok(deleted);
         }
     }
 }

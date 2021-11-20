@@ -108,6 +108,71 @@
 
   <div>
     <h2>
+      Currencies
+    </h2>
+
+    <div class="form-group">
+      <label for="selected-currency">
+        Currecncies
+        </label>
+      <div class="input-group">
+      <select id="selected-currency"
+              name="=selectedCurrency"
+              class="form-control"
+              [(ngModel)] ="selectedCurrency">
+        <option *ngFor="let currency of currencies " [value]="currency.id">
+          {{currency.name}}
+        </select>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="addCurrency()">
+            Add
+            </button>
+          </div>
+      </div>
+      </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Actions
+            </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let productCurrency of productCurrencies">
+          <td>
+            {{productCurrency.currency.id}}
+          </td>
+          <td>
+            {{productCurrency.currency.name}}
+          </td>
+          <td>
+            {{productCurrency.currency.description}}
+          </td>
+          <td>
+            <button type="button" class="btn btn primary" (click) ="deleteCurrency(productCurrency.currency.id)">
+              Delete
+              </button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <h2>
       Categories
     </h2>
 

@@ -42,11 +42,13 @@
     <None Remove="ClientApp\src\app\productType\edit\edit-product-type.component.ts" />
     <None Remove="ClientApp\src\app\productType\list\product-type-list.component.ts" />
     <None Remove="ClientApp\src\app\shared\models\currency.ts" />
+    <None Remove="ClientApp\src\app\shared\models\product-currency.ts" />
     <None Remove="ClientApp\src\app\shared\models\product.ts" />
     <None Remove="ClientApp\src\app\shared\models\unit-of-measure.ts" />
     <None Remove="ClientApp\src\app\shared\services\category.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\product-category.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\currency.service.ts" />
+    <None Remove="ClientApp\src\app\shared\services\product-currency.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\product.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\unit-of-measure.service.ts" />
     <None Remove="ClientApp\src\app\unit-of-measures\create\create-unit-of-measure.component.ts" />
@@ -66,10 +68,12 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\currency.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\category.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\product-category.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\models\product-currency.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\product.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\currency.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\unit-of-measure.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\category.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\services\product-currency.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\product-category.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\product.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\productType.service.ts" />
