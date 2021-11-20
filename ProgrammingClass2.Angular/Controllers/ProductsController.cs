@@ -58,8 +58,8 @@ namespace ProgrammingClass2.Angular.Controllers
                 _context.Products.Add(product);
                 _context.SaveChanges();
 
-                    return Ok(product);
-                }
+                return Ok(product);
+            }
 
             // BadRequest(ModelState) het enq veradardznum erb ModelStat valid chi.
             // Aysinqn erb validaiton-i error-ner kan.
