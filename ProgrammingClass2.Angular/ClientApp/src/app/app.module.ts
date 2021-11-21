@@ -26,6 +26,9 @@ import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-u
 import { CreateColorComponent } from './colors/create/create-color.component';
 import { EditColorComponent } from './colors/edit/edit-color.component';
 import { ColorListComponent } from './colors/list/color-list.component';
+import { BrandListComponent } from './brand/list/brand-list.component';
+import { CreateBrandComponent } from './brand/create/create-brand.component';
+import { EditBrandComponent } from './brand/edit/edit-brand.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { ColorListComponent } from './colors/list/color-list.component';
     CreateUnitOfMeasureComponent,
     CreateColorComponent,
     EditColorComponent,
-    ColorListComponent
+    ColorListComponent,
+    BrandListComponent,
+    CreateBrandComponent,
+    EditBrandComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -78,6 +84,10 @@ import { ColorListComponent } from './colors/list/color-list.component';
       { path: 'colors', component: ColorListComponent },
       { path: 'colors/create', component: CreateColorComponent },
       { path: 'colors/edit/:id', component: EditColorComponent },
+
+      { path: 'brands', component: BrandListComponent },
+      { path: 'brands/create', component: CreateBrandComponent },
+      { path: 'brands/edit/:id' , component: EditBrandComponent}
     ])
   ],
   providers: [

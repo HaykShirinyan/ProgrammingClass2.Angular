@@ -1,0 +1,42 @@
+<div>
+  <a [routerLink]="['create']" class="btn btn-primary mb-3">
+    Add Brand
+  </a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let brand of brands">
+        <td>
+          {{brand.id}}
+        </td>
+        <td>
+          {{brand.name}}
+        </td>
+        <td>
+          {{brand.description}}
+        </td>
+        <td>
+          <a class="btn btn-secondary" [routerLink]="['edit', brand.id]">
+            Edit
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

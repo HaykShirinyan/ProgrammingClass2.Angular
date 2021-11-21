@@ -12,19 +12,18 @@ namespace ProgrammingClass2.Angular.Data
 {
     public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
-        internal object currencies;
-
         public DbSet<Product> Products { get; set; } 
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<UnitOfMeasure> UnitOfMeasures { get; set; } 
         public DbSet<Collor> Collors { get; set; }
-        public object Product { get; internal set; }
-        public object Colors { get; internal set; }
 
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
+
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<ProductBrand> ProductBrands { get; set; }
 
         public ApplicationDbContext(
             DbContextOptions options,
@@ -37,6 +36,7 @@ namespace ProgrammingClass2.Angular.Data
             base.OnModelCreating(builder);
 
             builder.Entity<ProductCategory>().HasKey(p => new { p.ProductId, p.CategoryId });
+            builder.Entity<ProductBrand>().HasKey(p => new { p.ProductId, p.BrandId });
         }
     }
 }

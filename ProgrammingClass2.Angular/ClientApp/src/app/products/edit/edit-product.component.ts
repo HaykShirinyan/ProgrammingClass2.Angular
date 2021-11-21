@@ -13,6 +13,10 @@ import { CategoryService } from "../../shared/services/category.service";
 import { ProductCategoryService } from "../../shared/services/product-category.service";
 import { ProductService } from "../../shared/services/product.service";
 import { UnitOfMeasureService } from "../../shared/services/unit-of-measure.service";
+import { BrandService } from "../../shared/services/brand.service";
+import { ProductBrand } from "../../shared/models/product-brand";
+import { Brand } from "../../shared/models/brand";
+import { ProductBrandService } from "../../shared/services/product-brand.service";
 
 @Component({
   templateUrl: './edit-product.component.html'
@@ -26,15 +30,22 @@ export class EditProductComponent implements OnInit {
   private readonly _productTypeService: ProductTypeService;
   private readonly _productCategoryService: ProductCategoryService;
   private readonly _categoryService: CategoryService;
+  private readonly _brandService: BrandService;
+  private readonly _productBrandService: ProductBrandService;
 
   public product: Product;
   public unitOfMeasures: UnitOfMeasure[] = [];
   public currencies: Currency[] = [];
   public productTypes: ProductType[] = [];
+  public productBrand: ProductBrand[] = [];
 
   public categories: Category[] = [];
   public productCategories: ProductCategory[] = [];
   public selectedCategory: number;
+
+  public brands: Brand[] = [];
+  public productBrands: ProductBrand[] = [];
+  public selectedBrand: number;
 
   constructor(
     productService: ProductService,
@@ -42,10 +53,11 @@ export class EditProductComponent implements OnInit {
     router: Router,
     unitOfMeasureService: UnitOfMeasureService,
     currencyService: CurrencyService,
-    productTypeService: ProductTypeService
-    unitOfMeasureService: UnitOfMeasureService,
+    productTypeService: ProductTypeService,
     productCategoryService: ProductCategoryService,
-    categoryService: CategoryService
+    categoryService: CategoryService,
+    brandService: BrandService,
+    productBrandService: ProductBrandService
   ) {
     this._productService = productService;
     this._activeRoute = activeRoute;
@@ -55,6 +67,8 @@ export class EditProductComponent implements OnInit {
     this._productTypeService = productTypeService;
     this._productCategoryService = productCategoryService;
     this._categoryService = categoryService;
+    this._brandService = brandService;
+    this._productBrandService = productBrandService;
   }
 
   public async ngOnInit(): Promise<void> {
@@ -65,9 +79,12 @@ export class EditProductComponent implements OnInit {
     this.unitOfMeasures = await this._unitOfMeasureService.getAll();
     this.currencies = await this._currencyService.getCurrencies();
     this.productTypes = await this._productTypeService.getProductTypes();
-     
+
     this.categories = await this._categoryService.getAll();
     this.productCategories = await this._productCategoryService.getAll(id);
+
+    this.brands = await this._brandService.getBrands();
+    this.productBrands = await this._productBrandService.getAll(id);
   }
 
   public async updateProduct(form: NgForm): Promise<void> {
@@ -97,4 +114,26 @@ export class EditProductComponent implements OnInit {
 
     this.productCategories = await this._productCategoryService.getAll(this.product.id);
   }
+
+  public async addBrand(): Promise<void> {
+    if (this.selectedBrand) {
+      await this._productBrandService.add({
+        productId: this.product.id,
+        brandId: this.selectedBrand
+      });
+
+      this.productBrands = await this._productBrandService.getAll(this.product.id);
+      this.selectedBrand = null;
+    }
+  }
+
+  public async deleteBrand(brandId: number): Promise<void> {
+    await this._productBrandService.delete({
+      productId: this.product.id,
+      brandId: brandId
+    });
+
+    this.productBrands = await this._productBrandService.getAll(this.product.id);
+  }
 }
+

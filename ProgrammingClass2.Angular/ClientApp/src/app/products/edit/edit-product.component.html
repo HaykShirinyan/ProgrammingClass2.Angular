@@ -195,4 +195,70 @@
       </tbody>
     </table>
   </div>
+
+  <div>
+    <h2>
+      Brands
+    </h2>
+
+    <div class="form-group">
+      <label for="selected-brand">
+        Brands
+      </label>
+      <div class="input-group">
+        <select id="selected-brand"
+                name="selectedBrand"
+                class="form-control"
+                [(ngModel)]="selectedBrand">
+          <option *ngFor="let brand of brands" [value]="brand.id">
+            {{brand.name}}
+          </option>
+        </select>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="addBrand()">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let productBrand of productBrands">
+          <td>
+            {{productBrand.brand.id}}
+          </td>
+          <td>
+            {{productBrand.brand.name}}
+          </td>
+          <td>
+            {{productBrand.brand.description}}
+          </td>
+          <td>
+            <button type="button" class="btn btn-secondary" (click)="deleteBrand(productBrand.brand.id)">
+              Delete
+            </button>
+          </td>
+        </tr> 
+      </tbody>
+    </table>
+  </div>
 </div>
