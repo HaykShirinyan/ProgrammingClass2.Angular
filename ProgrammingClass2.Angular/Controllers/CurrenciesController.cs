@@ -15,6 +15,7 @@ namespace ProgrammingClass2.Angular.Controllers
     public class CurrenciesController : ControllerBase
     {
         private readonly ICurrencyRepository _currencyRepository;
+
         public CurrenciesController(ICurrencyRepository currencyRepository)
         {
             _currencyRepository = currencyRepository;
