@@ -1,4 +1,6 @@
 
+<app-loading-spinner [isVisible]="isLoading"></app-loading-spinner>
+
 <!-- *ngIf="product" nshanakum e ete product null che nor meji HTML cuyc tur -->
 <div *ngIf="product">
   <form #productForm="ngForm" (ngSubmit)="updateProduct(productForm)">

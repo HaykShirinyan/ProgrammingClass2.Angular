@@ -28,6 +28,8 @@ export class EditProductComponent implements OnInit {
   public productCategories: ProductCategory[] = [];
   public selectedCategory: number;
 
+  public isLoading: boolean;
+
   constructor(
     productService: ProductService,
     activeRoute: ActivatedRoute,
@@ -48,38 +50,62 @@ export class EditProductComponent implements OnInit {
     let idParameter = this._activeRoute.snapshot.paramMap.get('id');
     let id = parseInt(idParameter);
 
-    this.product = await this._productService.getProduct(id);
-    this.unitOfMeasures = await this._unitOfMeasureService.getAll();
-     
-    this.categories = await this._categoryService.getAll();
-    this.productCategories = await this._productCategoryService.getAll(id);
+    try {
+      this.isLoading = true;
+
+      this.product = await this._productService.getProduct(id);
+      this.unitOfMeasures = await this._unitOfMeasureService.getAll();
+
+      this.categories = await this._categoryService.getAll();
+      this.productCategories = await this._productCategoryService.getAll(id);
+    } finally {
+      this.isLoading = false
+    }    
   }
 
   public async updateProduct(form: NgForm): Promise<void> {
     if (form.valid) {
-      await this._productService.updateProduct(this.product);
-      this._router.navigate(['products']);
+      try {
+        this.isLoading = true;
+
+        await this._productService.updateProduct(this.product);
+        this._router.navigate(['products']);
+      } finally {
+        this.isLoading = false;
+      }      
     }
   }
 
   public async addCategory(): Promise<void> {
     if (this.selectedCategory) {
-      await this._productCategoryService.add({
-        productId: this.product.id,
-        categoryId: this.selectedCategory
-      });
+      try {
+        this.isLoading = true;
 
-      this.productCategories = await this._productCategoryService.getAll(this.product.id);
-      this.selectedCategory = null;
+        await this._productCategoryService.add({
+          productId: this.product.id,
+          categoryId: this.selectedCategory
+        });
+
+        this.productCategories = await this._productCategoryService.getAll(this.product.id);
+        this.selectedCategory = null;
+      } finally {
+        this.isLoading = false;
+      }      
     }
   }
 
   public async deleteCategory(categoryId: number): Promise<void> {
-    await this._productCategoryService.delete({
-      productId: this.product.id,
-      categoryId: categoryId
-    });
+    try {
+      this.isLoading = true;
 
-    this.productCategories = await this._productCategoryService.getAll(this.product.id);
+      await this._productCategoryService.delete({
+        productId: this.product.id,
+        categoryId: categoryId
+      });
+
+      this.productCategories = await this._productCategoryService.getAll(this.product.id);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit {
 
   // [] nshanakum e list.
   public products: Product[];
+  public isLoading: boolean;
 
   constructor(productService: ProductService) {
     this._productService = productService;
@@ -22,6 +23,16 @@ export class ProductListComponent implements OnInit {
 
   // ngOnInit kanchvum e erb mer component-e nor bacvum e.
   public async ngOnInit(): Promise<void> {
-    this.products = await this._productService.getProducts();
+    try {
+      this.isLoading = true;
+
+      this.products = await this._productService.getProducts();
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  public spinnerHidden(): void {
+    this.isLoading = false;
   }
 }
