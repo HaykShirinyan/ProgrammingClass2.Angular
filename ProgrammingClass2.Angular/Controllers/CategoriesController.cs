@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
 using System;
@@ -8,70 +7,72 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace ProgrammingClass2.Angular.Controllers
 {
-    [Route("api/currencies")]
+    [Route("api/categories")]
     [ApiController]
-    public class CurrenciesController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
-        private readonly ICurrencyRepository _currencyRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CurrenciesController(ICurrencyRepository currencyRepository)
+        public CategoriesController(ICategoryRepository categoryRepository)
         {
-            _currencyRepository = currencyRepository;
+            _categoryRepository = categoryRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
-            var currencies = await _currencyRepository.GetAllAsync();
-            return Ok(currencies);
+            var categories = await _categoryRepository.GetAllAsync();
+            return Ok(categories);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var currency = await _currencyRepository.GetAsync(id);
+            var category = await _categoryRepository.GetAsync(id);
 
-            if (currency == null)
+            if (category == null)
             {
                 return NotFound();
             }
-            return Ok(currency);
+
+            return Ok(category);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(Currency currency)
+        public async Task<IActionResult> AddAsync(Category category)
         {
             if (this.ModelState.IsValid)
             {
-                var added = await _currencyRepository.AddAsync(currency);
+                var added = await _categoryRepository.AddAsync(category);
                 return Ok(added);
             }
-            return BadRequest();
+
+            return BadRequest(this.ModelState);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, Currency currency)
+        public async Task<IActionResult> UpdateAsync(int id, Category category)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                if (id != currency.Id)
+                if (id != category?.Id)
                 {
                     return BadRequest();
                 }
-                var updated = _currencyRepository.UpdateAsync(currency);
+
+                var updated = await _categoryRepository.UpdateAsync(category);
                 return Ok(updated);
             }
 
-            return BadRequest(ModelState);
+            return BadRequest(this.ModelState);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var deleted = await _currencyRepository.DeleteAsync(id);
+            var deleted = await _categoryRepository.DeleteAsync(id);
 
             if (deleted == null)
             {

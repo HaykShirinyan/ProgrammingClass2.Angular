@@ -70,17 +70,17 @@
   </div>
 
   <div class="form-group">
-    <label for="product-ProductType">
+    <label for="product-productType">
       Product Type
       </label>
     <select id="product-productType"
             name="productType"
             class="form-control"
             [(ngModel)]="product.productTypeId">
-      <option value=""> -- Please Select -- </option>
+      <option value="">-- Please Select -- </option>
 
       <option *ngFor="let productType of productTypes" [value]="productType.id">
-        {{productType.id}}
+        {{productType.name}}
         </option>
       </select>
     </div>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingClass2.Angular.Data;
 
 namespace ProgrammingClass2.Angular.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211120073910_ProductCurrencies")]
+    partial class ProductCurrencies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -343,27 +345,6 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.Color", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Colors");
-                });
-
             modelBuilder.Entity("ProgrammingClass2.Angular.Models.Currency", b =>
                 {
                     b.Property<int>("Id")
@@ -435,21 +416,6 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("ProductCategories");
-                });
-
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.ProductColor", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ColorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "ColorId");
-
-                    b.HasIndex("ColorId");
-
-                    b.ToTable("ProductColors");
                 });
 
             modelBuilder.Entity("ProgrammingClass2.Angular.Models.ProductCurrency", b =>
@@ -596,25 +562,6 @@ namespace ProgrammingClass2.Angular.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ProgrammingClass2.Angular.Models.ProductColor", b =>
-                {
-                    b.HasOne("ProgrammingClass2.Angular.Models.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProgrammingClass2.Angular.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Color");
 
                     b.Navigation("Product");
                 });
