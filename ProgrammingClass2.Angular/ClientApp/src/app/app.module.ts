@@ -44,11 +44,11 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner.com
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
       { path: 'products', component: ProductListComponent },
-      { path: 'products/create', component: CreateProductComponent },
-      { path: 'products/edit/:id', component: EditProductComponent },
+      { path: 'products/create', component: CreateProductComponent, canActivate: [AuthorizeGuard] },
+      { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthorizeGuard] },
 
       { path: 'unit-of-measures', component: UnitOfMeasureListComponent },
-      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent }
+      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent, canActivate: [AuthorizeGuard] }
     ])
   ],
   providers: [
