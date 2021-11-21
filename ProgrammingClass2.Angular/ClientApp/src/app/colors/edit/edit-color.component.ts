@@ -28,11 +28,11 @@ export class EditColorComponent implements OnInit {
     let idParameter = this._activeRoute.snapshot.paramMap.get('id');
     let id = parseInt(idParameter);
 
-    this.color = await this._colorService.getColor(id);
+    await this._colorService.getAll();
   }
 
   public async updateColor(form: NgForm): Promise<void> {
-    await this._colorService.updateColor(this.color);
+    await this._colorService.getAll();
     this._router.navigate(['colors']);
   }
 }

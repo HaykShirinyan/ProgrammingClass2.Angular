@@ -15,11 +15,16 @@ namespace ProgrammingClass2.Angular.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<UnitOfMeasure> UnitOfMeasures { get; set; }
+        public DbSet<Currency> Currencies { get; set; }
         public DbSet<Color> Colors { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
+
+        public DbSet<ProductColor> ProductColors { get; set; }
+
+        public DbSet<ProductCurrency> ProductCurrencies { get; set; }
 
         public ApplicationDbContext(
             DbContextOptions options,
@@ -32,6 +37,10 @@ namespace ProgrammingClass2.Angular.Data
             base.OnModelCreating(builder);
 
             builder.Entity<ProductCategory>().HasKey(p => new { p.ProductId, p.CategoryId });
+
+            builder.Entity<ProductColor>().HasKey(p => new { p.ProductId, p.ColorId });
+
+            builder.Entity<ProductCurrency>().HasKey(p => new { p.ProductId, p.CurrencyId });
         }
     }
 }

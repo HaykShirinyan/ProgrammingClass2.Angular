@@ -18,6 +18,6 @@ export class ColorListComponent implements OnInit {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.colors = await this._colorService.getColors();
+    this.colors = await this._colorService.getAll();
   }
 }

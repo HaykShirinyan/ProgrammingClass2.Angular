@@ -28,11 +28,11 @@ export class EditCurrencyComponent implements OnInit {
     let idParameter = this._activeRoute.snapshot.paramMap.get('id');
     let id = parseInt(idParameter);
 
-    this.currency = await this._currencyService.getCurrency(id);
+    await this._currencyService.getAll();
   }
 
   public async updateCurrency(form: NgForm): Promise<void> {
-    await this._currencyService.updateCurrency(this.currency);
+    await this._currencyService.getAll();
     this._router.navigate(['currencies']);
   }
 }

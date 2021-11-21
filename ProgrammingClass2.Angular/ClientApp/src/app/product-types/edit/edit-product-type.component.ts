@@ -28,11 +28,11 @@ export class EditProductTypeComponent implements OnInit {
     let idParameter = this._activeRoute.snapshot.paramMap.get('id');
     let id = parseInt(idParameter);
 
-    this.productType = await this._productTypeService.getProductType(id);
+    await this._productTypeService.getAll();
   }
 
   public async updateProductType(form: NgForm): Promise<void> {
-    await this._productTypeService.updateProductType(this.productType);
+    await this._productTypeService.getAll();
     this._router.navigate(['product-types']);
   }
 }

@@ -20,7 +20,7 @@ export class CreateProductTypeComponent {
 
   public async createProductType(form: NgForm): Promise<void> {
     if (form.valid) {
-      await this._productTypeService.createProductType(this.productType);
+      await this._productTypeService.getAll();
       this._router.navigate(['product-types']);
     }
   }

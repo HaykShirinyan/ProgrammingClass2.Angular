@@ -20,7 +20,7 @@ export class CreateColorComponent {
 
   public async createColor(form: NgForm): Promise<void> {
     if (form.valid) {
-      await this._colorService.createColor(this.color);
+      await this._colorService.getAll();
       this._router.navigate(['colors']);
     }
   }

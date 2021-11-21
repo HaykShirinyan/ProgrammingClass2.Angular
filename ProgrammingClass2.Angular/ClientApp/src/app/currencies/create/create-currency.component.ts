@@ -20,7 +20,7 @@ export class CreateCurrenyComponent {
 
   public async createCurrency(form: NgForm): Promise<void> {
     if (form.valid) {
-      await this._currencyService.createCurrency(this.currency);
+      await this._currencyService.getAll();
       this._router.navigate(['currencies']);
     }
   }

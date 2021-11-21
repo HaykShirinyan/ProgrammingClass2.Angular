@@ -179,4 +179,136 @@
       </tbody>
     </table>
   </div>
+
+  <div>
+    <h2>
+      Colors
+    </h2>
+
+    <div class="form-group">
+      <label for="selected-color">
+        Colors
+      </label>
+      <div class="input-group">
+        <select id="selected-color"
+                name="selectedColor"
+                class="form-control"
+                [(ngModel)]="selectedColor">
+          <option *ngFor="let color of colors" [value]="color.id">
+            {{color.name}}
+          </option>
+        </select>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="addColor()">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let productColor of productColors">
+          <td>
+            {{productColor.color.id}}
+          </td>
+          <td>
+            {{productColor.color.name}}
+          </td>
+          <td>
+            {{productColor.color.description}}
+          </td>
+          <td>
+            <button type="button" class="btn btn-secondary" (click)="deleteColor(productColor.color.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <h2>
+      Currencies
+    </h2>
+
+    <div class="form-group">
+      <label for="selected-currency">
+        Currencies
+      </label>
+      <div class="input-group">
+        <select id="selected-currency"
+                name="selectedCurrency"
+                class="form-control"
+                [(ngModel)]="selectedCurrency">
+          <option *ngFor="let currency of currencies" [value]="currency.id">
+            {{currency.name}}
+          </option>
+        </select>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="addCurrency()">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let productCurrency of productCurrencies">
+          <td>
+            {{productCurrency.currency.id}}
+          </td>
+          <td>
+            {{productCurrency.currency.name}}
+          </td>
+          <td>
+            {{productCurrency.currency.description}}
+          </td>
+          <td>
+            <button type="button" class="btn btn-secondary" (click)="deleteCurrency(productCurrency.currency.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
