@@ -28,7 +28,6 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpGet("{currencyId}")]
-
         public async Task<IActionResult> GetAsync(int productId, int currencyId)
         {
             var productCurrency = await _productCurrencyRepository.GetAsync(productId, currencyId);
@@ -41,7 +40,6 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPost]
-
         public async Task<IActionResult> AddAsync(int productId, ProductCurrency productCurrency)
         {
             if (this.ModelState.IsValid)
@@ -55,8 +53,8 @@ namespace ProgrammingClass2.Angular.Controllers
             }
             return BadRequest(this.ModelState);
         }
-        [HttpDelete("{currencyId}")]
 
+        [HttpDelete("{currencyId}")]
         public async Task<IActionResult> DeleteAsync(int productId, int currencyId)
         {
             var deleted = await _productCurrencyRepository.DeleteAsync(productId, currencyId);
