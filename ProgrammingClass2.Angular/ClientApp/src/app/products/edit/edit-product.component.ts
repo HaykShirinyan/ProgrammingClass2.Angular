@@ -15,6 +15,10 @@ import { ProductCurrency } from "../../shared/models/product-currency";
 import { ProductCurrencyService } from "../../shared/services/product-currency.service";
 import { CurrencyService } from "../../shared/services/currency.service";
 import { Currency } from "../../shared/models/currency";
+import { ProductColor } from "../../shared/models/product-color";
+import { ProductColorService } from "../../shared/services/product-color.service";
+import { ColorService } from "../../shared/services/color.service";
+import { Color } from "../../shared/models/color";
 
 @Component({
   templateUrl: './edit-product.component.html'
@@ -29,18 +33,22 @@ export class EditProductComponent implements OnInit {
   private readonly _categoryService: CategoryService;
   private readonly _productCurrencyService: ProductCurrencyService;
   private readonly _currencyService: CurrencyService;
+  private readonly _productColorService: ProductColorService;
+  private readonly _colorService: ColorService;
 
   public product: Product;
   public unitOfMeasures: UnitOfMeasure[] = [];
   public productTypes: ProductType[] = [];
-
   public categories: Category[] = [];
   public productCategories: ProductCategory[] = [];
   public productCurrencies: ProductCurrency[] = [];
   public currencies: Currency[] = [];
+  public productColors: ProductColor[] = [];
+  public colors: Color[] = [];
 
   public selectedCurrency: number;
   public selectedCategory: number;
+  public selectedColor: number;
 
   constructor(
     productService: ProductService,
@@ -50,7 +58,9 @@ export class EditProductComponent implements OnInit {
     productCategoryService: ProductCategoryService,
     categoryService: CategoryService,
     productCurrencyService: ProductCurrencyService,
-    currencyService: CurrencyService
+    currencyService: CurrencyService,
+    productColorService: ProductColorService,
+    colorService: ColorService
   ) {
     this._productService = productService;
     this._activeRoute = activeRoute;
@@ -61,6 +71,8 @@ export class EditProductComponent implements OnInit {
     this._categoryService = categoryService;
     this._productCurrencyService = productCurrencyService;
     this._currencyService = currencyService
+    this._productColorService = productColorService;
+    this._colorService = colorService;
   }
 
   public async ngOnInit(): Promise<void> {
@@ -75,6 +87,8 @@ export class EditProductComponent implements OnInit {
     this.productCategories = await this._productCategoryService.getAll(id);
     this.productCurrencies = await this._productCurrencyService.getAll(id);
     this.currencies = await this._currencyService.getCurrencies();
+    this.productColors = await this._productColorService.getAll(id);
+    this.colors = await this._colorService.getAll();
   }
 
   public async updateProduct(form: NgForm): Promise<void> {
@@ -123,6 +137,25 @@ export class EditProductComponent implements OnInit {
       currencyId: currencyId
     });
 
+    this.productCurrencies = await this._productCurrencyService.getAll(this.product.id);
+  }
+
+  public async addColor(): Promise<void> {
+    if (this.selectedColor) {
+      await this._productColorService.add({
+        productId: this.product.id,
+        colorId: this.selectedColor
+      });
+      this.productCurrencies = await this._productCurrencyService.getAll(this.product.id);
+      this.selectedColor = null;
+    }
+  }
+
+  public async deleteColor(colorId: number): Promise<void> {
+    await this._productColorService.delete({
+      productId: this.product.id;
+      colorId: colorId
+    });
     this.productCurrencies = await this._productCurrencyService.getAll(this.product.id);
   }
 }

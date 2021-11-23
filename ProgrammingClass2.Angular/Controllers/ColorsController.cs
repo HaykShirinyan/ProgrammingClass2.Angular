@@ -64,5 +64,18 @@ namespace ProgrammingClass2.Angular.Controllers
             }
             return BadRequest(this.ModelState);
         }
+
+        [HttpDelete("{id}")]
+
+        public async Task<IActionResult> DeleteAsync (int id)
+        {
+            var deleted = _colorRepository.DeleteAsync(id);
+
+            if (deleted == null)
+            {
+                return NotFound();
+            }
+            return Ok(deleted);
+        }
     }
 }

@@ -173,6 +173,70 @@
 
   <div>
     <h2>
+      Colors
+      </h2>
+
+    <div class="form-group">
+      <label for="selected-color">
+        Colors
+        </label>
+      <div class="input-group">
+      <select id="selected-color"
+              name="selectedColor"
+              class="form-control"
+              [(ngModel)]="selectedColor">
+        <option *ngFor="let color of colors" [value]="color.id">
+          {{color.name}}
+          </option>
+        </select>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="addColor()">
+            Add
+            </button>
+          </div>
+      </div>
+      </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            ID
+            </th>
+          <th>
+            Name
+            </th>
+          <th>
+            Description
+            </th>
+          <th>
+            Actions
+            </th>
+          </tr>
+        </thead>
+      <tbody>
+        <tr *ngFor="let productColor of productColors">
+          <td>
+            {{productColor.color.id}}
+            </td>
+          <td>
+            {{productColor.color.name}}
+            </td>
+          <td>
+            {{productColor.color.description}}
+            </td>
+          <td>
+            <button type="button" class="btn btn-primary" (click)="deleteColor(productColor.color.id)">
+              Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <div>
+
+    <h2>
       Categories
     </h2>
 
