@@ -39,7 +39,6 @@ export class CreateProductComponent implements OnInit {
   public async ngOnInit(): Promise<void> {
     this.unitOfMeasures = await this._unitOfMeasureService.getAll();
     this.productTypes = await this._productTypeService.getProductType();
-
   }
 
   
