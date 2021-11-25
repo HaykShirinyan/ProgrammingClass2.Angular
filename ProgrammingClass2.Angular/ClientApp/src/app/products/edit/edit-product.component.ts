@@ -153,7 +153,7 @@ export class EditProductComponent implements OnInit {
 
   public async deleteColor(colorId: number): Promise<void> {
     await this._productColorService.delete({
-      productId: this.product.id;
+      productId: this.product.id,
       colorId: colorId
     });
     this.productCurrencies = await this._productCurrencyService.getAll(this.product.id);
