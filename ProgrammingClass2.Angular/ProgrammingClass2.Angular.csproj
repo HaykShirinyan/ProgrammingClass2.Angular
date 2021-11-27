@@ -36,6 +36,7 @@
     <None Remove="ClientApp\src\app\products\create\create-product.component.ts" />
     <None Remove="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <None Remove="ClientApp\src\app\products\list\product-list.component.ts" />
+    <None Remove="ClientApp\src\app\shared\components\loading-spinner.component.ts" />
     <None Remove="ClientApp\src\app\shared\models\category.ts" />
     <None Remove="ClientApp\src\app\shared\models\color.ts" />
     <None Remove="ClientApp\src\app\shared\models\product-category.ts" />
@@ -66,6 +67,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\products\create\create-product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\list\product-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\components\loading-spinner.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\productType\create\create-product-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\productType\edit\edit-product-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\productType\list\product-type-list.component.ts" />

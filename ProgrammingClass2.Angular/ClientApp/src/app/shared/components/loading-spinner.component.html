@@ -1,0 +1,13 @@
+
+<div class="app-spinner-container align-items-center d-flex justify-content-center" *ngIf="isVisible">
+  <h1>
+    {{loadingMessage}}
+  </h1>
+
+  <div *ngIf="canHide">
+    <button type="button" class="btn btn-secondary" (click)="onHideClicked()">
+      Hide
+    </button>
+  </div>
+</div>
+

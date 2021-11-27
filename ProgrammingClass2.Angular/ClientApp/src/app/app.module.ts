@@ -17,6 +17,7 @@ import { CreateProductComponent } from './products/create/create-product.compone
 import { EditProductComponent } from './products/edit/edit-product.component';
 import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-measure-list.component';
 import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-unit-of-measure.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner.component';
 import { CreateCurrencyComponent } from './currencies/create/create-currency.component';
 import { CurrencyListComponent } from './currencies/list/currency-list.component';
 import { EditCurrencyComponent } from './currencies/edit/edit-currency.component';
@@ -42,7 +43,8 @@ import { EditProductTypeComponent } from './productType/edit/edit-product-type.c
     EditProductTypeComponent,
     EditProductComponent,
     UnitOfMeasureListComponent,
-    CreateUnitOfMeasureComponent
+    CreateUnitOfMeasureComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -64,9 +66,11 @@ import { EditProductTypeComponent } from './productType/edit/edit-product-type.c
       { path: 'product-types/create', component: CreateProductTypeComponent },
       { path: 'product-types/edit/:id', component: EditProductTypeComponent },
       { path: 'products/edit/:id', component: EditProductComponent },
+      { path: 'products/create', component: CreateProductComponent, canActivate: [AuthorizeGuard] },
+      { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthorizeGuard] },
 
       { path: 'unit-of-measures', component: UnitOfMeasureListComponent },
-      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent }
+      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent, canActivate: [AuthorizeGuard] }
     ])
   ],
   providers: [
