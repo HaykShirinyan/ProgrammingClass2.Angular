@@ -13,6 +13,7 @@ export class EditProductTypeComponent implements OnInit {
   private readonly _router: Router;
 
   public productType: ProductType;
+  public isLoading: boolean;
 
   constructor(
     productTypeService: ProductTypeService,
@@ -25,10 +26,15 @@ export class EditProductTypeComponent implements OnInit {
   }
 
   public async ngOnInit(): Promise<void> {
-    let idParameter = this._activeRoute.snapshot.paramMap.get('id');
-    let id = parseInt(idParameter);
+    try {
+      this.isLoading = true;
+      let idParameter = this._activeRoute.snapshot.paramMap.get('id');
+      let id = parseInt(idParameter);
+      this.productType = await this._productTypeService.getProductType(id);
+    } finally {
+      this.isLoading = false;
+    }
 
-    this.productType = await this._productTypeService.getProductType(id);
   }
 
   public async updateProductType(form: NgForm): Promise<void> {

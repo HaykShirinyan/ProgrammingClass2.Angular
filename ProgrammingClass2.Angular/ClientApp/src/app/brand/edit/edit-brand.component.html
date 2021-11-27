@@ -1,3 +1,5 @@
+<app-loading-spinner [isVisible]="isLoading"></app-loading-spinner>
+
 <div *ngIf="brand">
   <form #brandForm="ngForm" (ngSubmit)="updateBrand(brandForm)">
     <div class="form-group">

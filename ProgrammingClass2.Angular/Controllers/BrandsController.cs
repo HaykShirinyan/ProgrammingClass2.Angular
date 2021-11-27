@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
 using System;
@@ -10,6 +11,7 @@ namespace ProgrammingClass2.Angular.Controllers
 {
     [Route("api/brands")]
     [ApiController]
+    [Authorize]
     public class BrandsController : ControllerBase
     {
         private readonly IBrandRepository _brandRepository;

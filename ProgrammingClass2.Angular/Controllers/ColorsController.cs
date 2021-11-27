@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
@@ -11,6 +12,7 @@ namespace ProgrammingClass2.Angular.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ColorsController : ControllerBase
     {
         private readonly IColorRepository _colorRepository;
@@ -20,6 +22,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var colors = _colorRepository.GetAll();

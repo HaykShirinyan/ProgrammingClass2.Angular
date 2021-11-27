@@ -13,6 +13,7 @@ export class EditBrandComponent implements OnInit {
   private readonly _router: Router;
 
   public brand: Brand;
+  public isLoading: boolean;
 
   constructor(
     brandService: BrandService,
@@ -25,10 +26,16 @@ export class EditBrandComponent implements OnInit {
   }
 
   public async ngOnInit(): Promise<void> {
-    let idParameter = this._activeRoute.snapshot.paramMap.get('id');
-    let id = parseInt(idParameter);
+    try {
+      this.isLoading = true;
 
-    this.brand = await this._brandService.getBrand(id);
+      let idParameter = this._activeRoute.snapshot.paramMap.get('id');
+      let id = parseInt(idParameter);
+
+      this.brand = await this._brandService.getBrand(id);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   public async updateBrand(form: NgForm): Promise<void> {

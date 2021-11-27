@@ -1,3 +1,4 @@
+<app-loading-spinner [isVisible]="isLoading"></app-loading-spinner>
 
 <div *ngIf="productType">
   <form #productTypeForm="ngForm" (ngSubmit)="updateProductType(productTypeForm)">

@@ -11,12 +11,25 @@ export class ProductTypeListComponent implements OnInit {
   private readonly _productTypeService: ProductTypeService;
 
   public productTypes: ProductType[];
+  public isLoading: boolean;
 
   constructor(productTypeService: ProductTypeService) {
     this._productTypeService = productTypeService;
   }
 
   public async ngOnInit(): Promise<void> {
-    this.productTypes = await this._productTypeService.getProductTypes();
+    try {
+      this.isLoading = true;
+
+      this.productTypes = await this._productTypeService.getProductTypes();
+    } finally {
+      this.isLoading = false;
+    }
   }
+
+  public spinnerHidden(): void {
+    this.isLoading = false;
+  }
+   
+  
 }

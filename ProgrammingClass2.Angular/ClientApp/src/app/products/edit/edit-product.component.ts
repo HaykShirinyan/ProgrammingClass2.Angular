@@ -82,22 +82,17 @@ export class EditProductComponent implements OnInit {
 
       this.product = await this._productService.getProduct(id);
       this.unitOfMeasures = await this._unitOfMeasureService.getAll();
+      this.currencies = await this._currencyService.getCurrencies();
+      this.productTypes = await this._productTypeService.getProductTypes();
 
       this.categories = await this._categoryService.getAll();
       this.productCategories = await this._productCategoryService.getAll(id);
+
+      this.brands = await this._brandService.getBrands();
+      this.productBrands = await this._productBrandService.getAll(id);
     } finally {
       this.isLoading = false
     }    
-    this.product = await this._productService.getProduct(id);
-    this.unitOfMeasures = await this._unitOfMeasureService.getAll();
-    this.currencies = await this._currencyService.getCurrencies();
-    this.productTypes = await this._productTypeService.getProductTypes();
-
-    this.categories = await this._categoryService.getAll();
-    this.productCategories = await this._productCategoryService.getAll(id);
-
-    this.brands = await this._brandService.getBrands();
-    this.productBrands = await this._productBrandService.getAll(id);
   }
 
   public async updateProduct(form: NgForm): Promise<void> {

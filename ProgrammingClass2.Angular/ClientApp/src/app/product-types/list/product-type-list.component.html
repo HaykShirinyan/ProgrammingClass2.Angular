@@ -1,3 +1,7 @@
+<app-loading-spinner [isVisible]="isLoading"
+                     loadingMessage="Loading Product Types..."
+                     [canHide]="true"
+                     (hideClick)="spinnerHidden()"></app-loading-spinner>
 
 <div>
   <a [routerLink]="['create']" class="btn btn-primary mb-3">
@@ -13,7 +17,7 @@
           Name
         </th>
         <th>
-          Description 
+          Description
         </th>
         <th>
           Actions
@@ -21,7 +25,7 @@
       </tr>
     </thead>
 
-    <tbody>    
+    <tbody>
       <tr *ngFor="let type of productTypes">
         <td>
           {{type.id}}

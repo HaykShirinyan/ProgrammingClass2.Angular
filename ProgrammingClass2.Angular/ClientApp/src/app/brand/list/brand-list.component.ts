@@ -11,16 +11,26 @@ import { BrandService } from "../../shared/services/brand.service";
 })
 
 export class BrandListComponent implements OnInit {
-  private readonly _currencyService: BrandService;
+  private _brandService: BrandService;
 
   public brands: Brand[];
-  private _brandService: BrandService;
+  public isLoading: boolean;
 
   constructor(brandService: BrandService) {
     this._brandService = brandService;
   }
 
   public async ngOnInit(): Promise<void> {
-    this.brands = await this._brandService.getBrands();
+    try {
+      this.isLoading = true;
+
+      this.brands = await this._brandService.getBrands();
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  public spinnerHidden(): void {
+    this.isLoading = false;
   }
 }

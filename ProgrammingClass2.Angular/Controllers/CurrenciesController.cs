@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
@@ -12,6 +13,7 @@ namespace ProgrammingClass2.Angular.Controllers
 {
     [Route("api/currencies")]
     [ApiController]
+    [Authorize]
     public class CurrenciesController : ControllerBase
     {
         private readonly ICurrencyRepository _currencyRepository;
@@ -22,6 +24,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var currencies = _currencyRepository.GetAll();
