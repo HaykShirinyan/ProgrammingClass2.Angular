@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingClass2.Angular.Data;
@@ -12,6 +13,7 @@ namespace ProgrammingClass2.Angular.Controllers
 {
     [Route("api/colors")]
     [ApiController]
+    [Authorize]
     public class ColorsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +25,7 @@ namespace ProgrammingClass2.Angular.Controllers
 
         // /api/colors
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var colors = _context.Colors.ToList();

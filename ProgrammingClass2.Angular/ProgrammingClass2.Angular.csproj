@@ -26,11 +26,15 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\src\app\currencies\delete\**" />
+    <Compile Remove="ClientApp\src\app\product-types\delete\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\src\app\currencies\delete\**" />
+    <Content Remove="ClientApp\src\app\product-types\delete\**" />
     <EmbeddedResource Remove="ClientApp\src\app\currencies\delete\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\product-types\delete\**" />
     <None Remove="$(SpaRoot)**" />
     <None Remove="ClientApp\src\app\currencies\delete\**" />
+    <None Remove="ClientApp\src\app\product-types\delete\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -80,10 +84,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\product-color.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\product-currency.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\product-type.service.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\product-types\delete\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -64,20 +64,20 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner.com
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
       { path: 'products', component: ProductListComponent },
-      { path: 'products/create', component: CreateProductComponent },
-      { path: 'products/edit/:id', component: EditProductComponent },
+      { path: 'products/create', component: CreateProductComponent, canActivate: [AuthorizeGuard]  },
+      { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthorizeGuard]  },
       { path: 'product-types', component: ProductTypeListComponent },
-      { path: 'product-types/create', component: CreateProductTypeComponent },
-      { path: 'product-types/edit/:id', component: EditProductTypeComponent },
+      { path: 'product-types/create', component: CreateProductTypeComponent, canActivate: [AuthorizeGuard] },
+      { path: 'product-types/edit/:id', component: EditProductTypeComponent, canActivate: [AuthorizeGuard]  },
       { path: 'currencies', component: CurrencyListComponent },
-      { path: 'currencies/create', component: CreateCurrenyComponent },
-      { path: 'currencies/edit/:id', component: EditCurrencyComponent },
+      { path: 'currencies/create', component: CreateCurrenyComponent, canActivate: [AuthorizeGuard]  },
+      { path: 'currencies/edit/:id', component: EditCurrencyComponent, canActivate: [AuthorizeGuard]  },
       { path: 'unit-of-measures', component: UnitOfMeasureListComponent },
-      { path: 'unit-of-measure/create', component: CreateUnitOfMeasureComponent },
+      { path: 'unit-of-measure/create', component: CreateUnitOfMeasureComponent, canActivate: [AuthorizeGuard]  },
       { path: 'colors', component: ColorListComponent },
-      { path: 'colors/create', component: CreateColorComponent },
-      { path: 'colors/edit/:id', component: EditColorComponent },
-      { path: 'shared/components', component: LoadingSpinnerComponent }
+      { path: 'colors/create', component: CreateColorComponent, canActivate: [AuthorizeGuard]  },
+      { path: 'colors/edit/:id', component: EditColorComponent, canActivate: [AuthorizeGuard] },
+      { path: 'shared/components', component: LoadingSpinnerComponent, canActivate: [AuthorizeGuard]  }
     ])
   ],
   providers: [

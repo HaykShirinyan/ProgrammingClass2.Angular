@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
@@ -12,6 +13,7 @@ namespace ProgrammingClass2.Angular.Controllers
     // /api/products/5/colors
     [Route("api/products/{productId}/colors")]
     [ApiController]
+    [Authorize]
     public class ProductColorsController : ControllerBase
     {
         private readonly IProductColorRepository _productColorRepository;
@@ -22,6 +24,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(int productId)
         {
             var productColors = await _productColorRepository.GetAllAsync(productId);

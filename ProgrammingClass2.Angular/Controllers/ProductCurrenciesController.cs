@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
@@ -12,6 +13,7 @@ namespace ProgrammingClass2.Angular.Controllers
     // /api/products/5/currencies
     [Route("api/products/{productId}/currencies")]
     [ApiController]
+    [Authorize]
     public class ProductCurrenciesController : ControllerBase
     {
         private readonly IProductCurrencyRepository _productCurrencyRepository;
@@ -22,6 +24,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(int productId)
         {
             var productCurrencies = await _productCurrencyRepository.GetAllAsync(productId);
