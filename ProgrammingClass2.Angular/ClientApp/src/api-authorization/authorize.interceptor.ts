@@ -43,7 +43,7 @@ export class AuthorizeInterceptor implements HttpInterceptor {
     }
 
     // It's a relative url like /api/Products
-    if (/^\/[^\/].*/.test(req.url)) {
+    if (/^[^\/].*/.test(req.url)) {
       return true;
     }
 

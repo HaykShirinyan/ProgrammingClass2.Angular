@@ -1,4 +1,9 @@
 
+<app-loading-spinner [isVisible]="isLoading"
+                     loadingMessage="Loading Products..."
+                     [canHide]="true"
+                     (hideClick)="spinnerHidden()"></app-loading-spinner>
+
 <div>
   <a [routerLink]="['create']" class="btn btn-primary mb-3">
     Create Product
