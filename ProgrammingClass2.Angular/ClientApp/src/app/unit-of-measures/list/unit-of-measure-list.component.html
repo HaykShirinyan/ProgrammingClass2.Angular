@@ -1,4 +1,9 @@
 
+<app-loading-spinner [isVisible]="isLoading"
+                     loadingMessage="Loading Colors..."
+                     [canHide]="true"
+                     (hideClick)="spinnerHidden()"></app-loading-spinner>
+
 <div>
   <a class="btn-primary btn mb-3" [routerLink]="['create']">
     Create

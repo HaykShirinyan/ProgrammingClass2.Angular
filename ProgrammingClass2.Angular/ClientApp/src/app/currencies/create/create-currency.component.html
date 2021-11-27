@@ -1,4 +1,6 @@
 
+<app-loading-spinner [isVisible]="isLoading"></app-loading-spinner>
+
 <form #currencyForm="ngForm" (ngSubmit)="createCurrency(currencyForm)">
   <div class="form-group">
     <label for="currency-name">

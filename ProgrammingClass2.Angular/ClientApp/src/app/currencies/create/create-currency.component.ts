@@ -12,6 +12,7 @@ export class CreateCurrenyComponent {
   private readonly _router: Router;
 
   public currency: Currency = {};
+  public isLoading: boolean;
 
   constructor(currencyService: CurrencyService, router: Router) {
     this._currencyService = currencyService;
@@ -20,8 +21,14 @@ export class CreateCurrenyComponent {
 
   public async createCurrency(form: NgForm): Promise<void> {
     if (form.valid) {
-      await this._currencyService.getAll();
-      this._router.navigate(['currencies']);
+      try {
+        this.isLoading = true;
+
+        await this._currencyService.getAll();
+        this._router.navigate(['currencies']);
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
 }

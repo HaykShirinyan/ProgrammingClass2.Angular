@@ -12,12 +12,23 @@ export class ColorListComponent implements OnInit {
   private readonly _colorService: ColorService;
 
   public colors: Color[];
+  public isLoading: boolean;
 
   constructor(colorService: ColorService) {
     this._colorService = colorService;
   }
 
   public async ngOnInit(): Promise<void> {
-    this.colors = await this._colorService.getAll();
+    try {
+      this.isLoading = true;
+
+      this.colors = await this._colorService.getAll();
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  public spinnerHidden(): void {
+    this.isLoading = false;
   }
 }

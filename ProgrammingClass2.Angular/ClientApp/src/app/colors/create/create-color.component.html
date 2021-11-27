@@ -1,4 +1,6 @@
 
+<app-loading-spinner [isVisible]="isLoading"></app-loading-spinner>
+
 <form #colorForm="ngForm" (ngSubmit)="createColor(colorForm)">
   <div class="form-group">
     <label for="color-name">

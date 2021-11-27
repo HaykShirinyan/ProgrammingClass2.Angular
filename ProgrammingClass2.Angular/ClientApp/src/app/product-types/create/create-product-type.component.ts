@@ -12,6 +12,7 @@ export class CreateProductTypeComponent {
   private readonly _router: Router;
 
   public productType: ProductType = {};
+  public isLoading: boolean;
 
   constructor(productTypeService: ProductTypeService, router: Router) {
     this._productTypeService = productTypeService;
@@ -20,8 +21,14 @@ export class CreateProductTypeComponent {
 
   public async createProductType(form: NgForm): Promise<void> {
     if (form.valid) {
-      await this._productTypeService.getAll();
-      this._router.navigate(['product-types']);
+      try {
+        this.isLoading = true;
+
+        await this._productTypeService.getAll();
+        this._router.navigate(['product-types']);
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
 }

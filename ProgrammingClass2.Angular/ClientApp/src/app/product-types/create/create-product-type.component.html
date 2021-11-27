@@ -1,4 +1,6 @@
 
+<app-loading-spinner [isVisible]="isLoading"></app-loading-spinner>
+
 <form #productTypeForm="ngForm" (ngSubmit)="createProductType(productTypeForm)">
   <div class="form-group">
     <label for="product-type-name">

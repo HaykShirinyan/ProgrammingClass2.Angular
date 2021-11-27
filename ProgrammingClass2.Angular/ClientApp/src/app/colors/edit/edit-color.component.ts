@@ -13,6 +13,7 @@ export class EditColorComponent implements OnInit {
   private readonly _router: Router;
 
   public color: Color;
+  public isLoading: boolean;
 
   constructor(
     colorService: ColorService,
@@ -28,11 +29,23 @@ export class EditColorComponent implements OnInit {
     let idParameter = this._activeRoute.snapshot.paramMap.get('id');
     let id = parseInt(idParameter);
 
-    await this._colorService.getAll();
+    try {
+      this.isLoading = true;
+
+      await this._colorService.getAll();
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   public async updateColor(form: NgForm): Promise<void> {
-    await this._colorService.getAll();
-    this._router.navigate(['colors']);
+    try {
+      this.isLoading = true;
+
+      await this._colorService.getAll();
+      this._router.navigate(['colors']);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }
