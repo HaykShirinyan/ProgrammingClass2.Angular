@@ -29,6 +29,7 @@ import { ColorListComponent } from './colors/list/color-list.component';
 import { BrandListComponent } from './brand/list/brand-list.component';
 import { CreateBrandComponent } from './brand/create/create-brand.component';
 import { EditBrandComponent } from './brand/edit/edit-brand.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,8 @@ import { EditBrandComponent } from './brand/edit/edit-brand.component';
     BrandListComponent,
     CreateBrandComponent,
     EditBrandComponent
+    CreateUnitOfMeasureComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -67,8 +70,8 @@ import { EditBrandComponent } from './brand/edit/edit-brand.component';
       // Erb mer website-i URL lini /products, ProductListComponent component piti ogtagorcvi
 
       { path: 'products', component: ProductListComponent },
-      { path: 'products/create', component: CreateProductComponent },
-      { path: 'products/edit/:id', component: EditProductComponent },
+      { path: 'products/create', component: CreateProductComponent, canActivate: [AuthorizeGuard] },
+      { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthorizeGuard] },
 
       { path: 'product-types', component: ProductTypeListComponent },
       { path: 'product-types/create', component: CreateProductTypeComponent },
@@ -88,6 +91,7 @@ import { EditBrandComponent } from './brand/edit/edit-brand.component';
       { path: 'brands', component: BrandListComponent },
       { path: 'brands/create', component: CreateBrandComponent },
       { path: 'brands/edit/:id' , component: EditBrandComponent}
+      { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent, canActivate: [AuthorizeGuard] }
     ])
   ],
   providers: [

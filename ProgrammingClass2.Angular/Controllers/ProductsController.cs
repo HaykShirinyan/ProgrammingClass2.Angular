@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingClass2.Angular.Data;
@@ -15,6 +16,7 @@ namespace ProgrammingClass2.Angular.Controllers
     // Ays controller-i bolor endpoint-nere sksum en /api/products URL-ov.
     [Route("api/products")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
@@ -26,6 +28,7 @@ namespace ProgrammingClass2.Angular.Controllers
 
         // /api/products
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var products = _productRepository.GetAll();

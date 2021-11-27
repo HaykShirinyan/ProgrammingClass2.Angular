@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
@@ -11,6 +12,7 @@ namespace ProgrammingClass2.Angular.Controllers
 {
     [Route("api/unit-of-measures")]
     [ApiController]
+    [Authorize]
     public class UnitOfMeasuresController : ControllerBase
     {
         private readonly IUnitOfMeasureRepository _unitOfMeasureRepository;
@@ -21,6 +23,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var unitOfMeasures = _unitOfMeasureRepository.GetAllUnitOfMeasures();
