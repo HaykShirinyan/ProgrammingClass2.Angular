@@ -48,6 +48,7 @@ export class EditProductComponent implements OnInit {
   public currencies: Currency[] = [];
   public productCurrencies: ProductCurrency[] = [];
   public selectedCurrency: number;
+  public isLoading: boolean;
 
   constructor(
     productService: ProductService,
@@ -78,84 +79,133 @@ export class EditProductComponent implements OnInit {
   public async ngOnInit(): Promise<void> {
     let idParameter = this._activeRoute.snapshot.paramMap.get('id');
     let id = parseInt(idParameter);
-    this.product = await this._productService.getProduct(id);
-    this.unitOfMeasures = await this._unitOfMeasureService.getAll();
-    this.productTypes = await this._productTypeService.getAll();
-    this.categories = await this._categoryService.getAll();
-    this.productCategories = await this._productCategoryService.getAll(id);
-    this.colors = await this._colorService.getAll();
-    this.productColors = await this._productColorService.getAll(id);
-    this.currencies = await this._currencyService.getAll();
-    this.productCurrencies = await this._productCategoryService.getAll(id);
+
+    try {
+      this.isLoading = true;
+
+      this.product = await this._productService.getProduct(id);
+      this.unitOfMeasures = await this._unitOfMeasureService.getAll();
+      this.productTypes = await this._productTypeService.getAll();
+      this.categories = await this._categoryService.getAll();
+      this.productCategories = await this._productCategoryService.getAll(id);
+      this.colors = await this._colorService.getAll();
+      this.productColors = await this._productColorService.getAll(id);
+      this.currencies = await this._currencyService.getAll();
+      this.productCurrencies = await this._productCategoryService.getAll(id);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   public async updateProduct(form: NgForm): Promise<void> {
     if (form.valid) {
-      await this._productService.updateProduct(this.product);
-      this._router.navigate(['products']);
+      try {
+        this.isLoading = true;
+
+        await this._productService.updateProduct(this.product);
+        this._router.navigate(['products']);
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
 
   public async addCategory(): Promise<void> {
     if (this.selectedCategory) {
-      await this._productCategoryService.add({
-        productId: this.product.id,
-        categoryId: this.selectedCategory
-      });
+      try {
+        this.isLoading = true;
 
-      this.productCategories = await this._productCategoryService.getAll(this.product.id);
-      this.selectedCategory = null;
+        await this._productCategoryService.add({
+          productId: this.product.id,
+          categoryId: this.selectedCategory
+        });
+
+        this.productCategories = await this._productCategoryService.getAll(this.product.id);
+        this.selectedCategory = null;
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
 
   public async deleteCategory(categoryId: number): Promise<void> {
-    await this._productCategoryService.delete({
-      productId: this.product.id,
-      categoryId: categoryId
-    });
+    try {
+      this.isLoading = true;
 
-    this.productCategories = await this._productCategoryService.getAll(this.product.id);
+      await this._productCategoryService.delete({
+        productId: this.product.id,
+        categoryId: categoryId
+      });
+
+      this.productCategories = await this._productCategoryService.getAll(this.product.id);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   public async addColor(): Promise<void> {
     if (this.selectedColor) {
-      await this._productColorService.add({
-        productId: this.product.id,
-        colorId: this.selectedColor
-      });
+      try {
+        this.isLoading = true;
 
-      this.productColors = await this._productColorService.getAll(this.product.id);
-      this.selectedColor = null;
+        await this._productColorService.add({
+          productId: this.product.id,
+          colorId: this.selectedColor
+        });
+
+        this.productColors = await this._productColorService.getAll(this.product.id);
+        this.selectedColor = null;
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
 
   public async deleteColor(colorId: number): Promise<void> {
-    await this._productColorService.delete({
-      productId: this.product.id,
-      colorId: colorId
-    });
+    try {
+      this.isLoading = true;
 
-    this.productColors = await this._productColorService.getAll(this.product.id);
+      await this._productColorService.delete({
+        productId: this.product.id,
+        colorId: colorId
+      });
+
+      this.productColors = await this._productColorService.getAll(this.product.id);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   public async addCurrency(): Promise<void> {
     if (this.selectedCurrency) {
-      await this._productCurrencyService.add({
-        productId: this.product.id,
-        currencyId: this.selectedCurrency
-      });
+      try {
+        this.isLoading = true;
 
-      this.productCurrencies = await this._productCurrencyService.getAll(this.product.id);
-      this.selectedCurrency = null;
+        await this._productCurrencyService.add({
+          productId: this.product.id,
+          currencyId: this.selectedCurrency
+        });
+
+        this.productCurrencies = await this._productCurrencyService.getAll(this.product.id);
+        this.selectedCurrency = null;
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
 
   public async deleteCurrency(currencyId: number): Promise<void> {
-    await this._productCurrencyService.delete({
-      productId: this.product.id,
-      currencyId: currencyId
-    });
+    try {
+      this.isLoading = true;
 
-    this.productCurrencies = await this._productCurrencyService.getAll(this.product.id);
+      await this._productCurrencyService.delete({
+        productId: this.product.id,
+        currencyId: currencyId
+      });
+
+      this.productCurrencies = await this._productCurrencyService.getAll(this.product.id);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

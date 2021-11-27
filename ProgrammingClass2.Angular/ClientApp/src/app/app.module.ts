@@ -26,6 +26,7 @@ import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-u
 import { ColorListComponent } from './colors/list/color-list.component';
 import { CreateColorComponent } from './colors/create/create-color.component';
 import { EditColorComponent } from './colors/edit/edit-color.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { EditColorComponent } from './colors/edit/edit-color.component';
     CreateUnitOfMeasureComponent,
     ColorListComponent,
     CreateColorComponent,
-    EditColorComponent
+    EditColorComponent,
+    LoadingSpinnerComponent
 
 
   ],
@@ -74,7 +76,8 @@ import { EditColorComponent } from './colors/edit/edit-color.component';
       { path: 'unit-of-measure/create', component: CreateUnitOfMeasureComponent },
       { path: 'colors', component: ColorListComponent },
       { path: 'colors/create', component: CreateColorComponent },
-      { path: 'colors/edit/:id', component: EditColorComponent }
+      { path: 'colors/edit/:id', component: EditColorComponent },
+      { path: 'shared/components', component: LoadingSpinnerComponent }
     ])
   ],
   providers: [
