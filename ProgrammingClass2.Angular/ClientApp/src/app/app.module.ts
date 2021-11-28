@@ -67,7 +67,7 @@ import { EditProductTypeComponent } from './productType/edit/edit-product-type.c
       { path: 'product-types/edit/:id', component: EditProductTypeComponent },
       { path: 'products/edit/:id', component: EditProductComponent },
       { path: 'products/create', component: CreateProductComponent, canActivate: [AuthorizeGuard] },
-      { path: 'products/edit/:id', component: EditProductComponent, canActivate: [AuthorizeGuard] },
+      { path: 'products/edit/:id', component: EditProductComponent },
 
       { path: 'unit-of-measures', component: UnitOfMeasureListComponent },
       { path: 'unit-of-measures/create', component: CreateUnitOfMeasureComponent, canActivate: [AuthorizeGuard] }

@@ -74,6 +74,7 @@ namespace ProgrammingClass2.Angular.Controllers
         // HttpPut ogtagorcum en update anenlu hamar.
         // /api/products/45
         [HttpPut("{id}")]
+        [AllowAnonymous]
         public IActionResult Update(int id, Product product)
         {
             if (ModelState.IsValid)
