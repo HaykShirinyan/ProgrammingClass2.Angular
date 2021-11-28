@@ -13,6 +13,8 @@ using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
 using ProgrammingClass2.Angular.Repositories.Implementations;
+using ProgrammingClass2.Angular.Services.Definitions;
+using ProgrammingClass2.Angular.Services.Implementations;
 
 namespace ProgrammingClass2.Angular
 {
@@ -50,10 +52,17 @@ namespace ProgrammingClass2.Angular
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            services.AddAutoMapper(this.GetType().Assembly);
+
             // Ayspes grancum enq mer service-nere, vorpeszi karoxananq controller-nerei contructor-neri mej dranq pahanjenq.
+            
+            // Aystex kgrancenq repository-nere
             services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+
+            // Aystex el kgrancenq service-nere
+            services.AddTransient<IUnitOfMeasureService, UnitOfMeasureService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
