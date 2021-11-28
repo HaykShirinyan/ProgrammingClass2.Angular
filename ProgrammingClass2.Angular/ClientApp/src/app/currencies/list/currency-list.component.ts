@@ -14,6 +14,7 @@ export class CurrencyListComponent implements OnInit {
 
   public currencies: Currency[];
   public isLoading: boolean;
+
   constructor(currencyService: CurrencyService) {
     this._currencyService = currencyService;
   }
