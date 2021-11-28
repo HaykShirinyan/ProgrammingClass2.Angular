@@ -10,7 +10,7 @@ export class ProductTypeListComponent implements OnInit {
   private readonly _productTypeServise: ProductTypeService;
 
   public productTypes: ProductType[];
-  public isLoading: Boolean;
+  public isLoading: boolean;
 
   constructor(productTypeService: ProductTypeService) {
     this._productTypeServise = productTypeService;
@@ -29,5 +29,5 @@ export class ProductTypeListComponent implements OnInit {
   public spinnerHidden(): void {
     this.isLoading = false;
   }
-  }
+}
 

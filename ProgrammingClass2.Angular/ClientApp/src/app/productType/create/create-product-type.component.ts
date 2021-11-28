@@ -11,17 +11,17 @@ export class CreateProductTypeComponent {
   private readonly _router: Router;
   private readonly _productTypeService: ProductTypeService;
 
+  public productType: ProductType = {};
+
   constructor(productTypeService: ProductTypeService, router: Router) {
     this._productTypeService = productTypeService;
     this._router = router;
   }
-
-  public productType: ProductType = {};
 
   public async createProductType(form: NgForm): Promise<void> {
     if (form.valid) {
       await this._productTypeService.createProductType(this.productType);
       this._router.navigate(["product-types"]);
     }
-}
+  }
 }

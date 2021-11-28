@@ -15,7 +15,6 @@ export class EditProductTypeComponent implements OnInit {
   public productType: ProductType;
   public isLoading: boolean;
 
-
   constructor(productTypeService: ProductTypeService, activeRoute: ActivatedRoute, router: Router) {
     this._productTypeService = productTypeService;
     this._activeRoute = activeRoute;
@@ -45,5 +44,4 @@ export class EditProductTypeComponent implements OnInit {
       this.isLoading = false;
     }
   }
-
 }
