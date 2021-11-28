@@ -1,7 +1,12 @@
+<app-loading-spinner [isVisible]="isLoading"
+                     loadingMessage="Loading Product Types..."
+                     [canHide]="true"
+                     (hideClick)="spinnerHidden()"></app-loading-spinner>
+
 <div>
-  <a [routerLink] ="['create']" class="btn-primary btn mb-3">
+  <a [routerLink]="['create']" class="btn-primary btn mb-3">
     Create ProductType
-    </a>
+  </a>
 
   <table class="table">
     <thead>

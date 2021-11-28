@@ -15,6 +15,7 @@ export class EditCurrencyComponent implements OnInit {
   private readonly _router: Router;
 
   public currency: Currency;
+  public isLoading: Boolean;
 
   constructor(currencyService: CurrencyService, activeRoute: ActivatedRoute, router:Router) {
     this._currencyService = currencyService;
@@ -26,11 +27,23 @@ export class EditCurrencyComponent implements OnInit {
     let idParameter = this._activeRoute.snapshot.paramMap.get('id');
     let id = parseInt(idParameter);
 
-    this.currency = await this._currencyService.getCurrency(id);
+    try {
+      this.isLoading = true;
+
+      this.currency = await this._currencyService.getCurrency(id);
+    } finally {
+      this.isLoading = false;
+    }
   }
 
   public async updateCurrency(form: NgForm): Promise<void> {
-    await this._currencyService.updateCurrency(this.currency);
-    this._router.navigate(['currencies']);
+    try {
+      this.isLoading = true;
+
+      await this._currencyService.updateCurrency(this.currency);
+      this._router.navigate(['currencies']);
+    } finally {
+      this.isLoading = false;
+    }
   }
  }

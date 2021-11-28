@@ -34,7 +34,7 @@ namespace ProgrammingClass2.Angular
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
@@ -59,6 +59,7 @@ namespace ProgrammingClass2.Angular
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
             services.AddTransient<IProductCurrencyRepository, ProductCurrencyRepository>();
             services.AddTransient<IColorRepository, ColorRepository>();
+            services.AddTransient<IProductColorRepository, ProductColorRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
