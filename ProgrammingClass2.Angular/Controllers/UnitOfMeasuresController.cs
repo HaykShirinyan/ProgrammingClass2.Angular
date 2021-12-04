@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProgrammingClass2.Angular.DataTransferObjects;
 using ProgrammingClass2.Angular.Models;
-using ProgrammingClass2.Angular.Repositories.Definitions;
+using ProgrammingClass2.Angular.Services.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,40 +16,41 @@ namespace ProgrammingClass2.Angular.Controllers
     [Authorize]
     public class UnitOfMeasuresController : ControllerBase
     {
-        private readonly IUnitOfMeasureRepository _unitOfMeasureRepository;
+        private readonly IUnitOfMeasureService _unitOfMeasureService;
 
-        public UnitOfMeasuresController(IUnitOfMeasureRepository unitOfMeasureRepository)
+        public UnitOfMeasuresController(IUnitOfMeasureService unitOfMeasureService)
         {
-            _unitOfMeasureRepository = unitOfMeasureRepository;
+            _unitOfMeasureService = unitOfMeasureService;
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var unitOfMeasures = _unitOfMeasureRepository.GetAllUnitOfMeasures();
+            var unitOfMeasures = await _unitOfMeasureService.GetAllAsync();
             return Ok(unitOfMeasures);
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var unitOfMeasures = _unitOfMeasureRepository.Get(id);
+            var unitOfMeasure = await _unitOfMeasureService.GetAsync(id);
 
-            if (unitOfMeasures != null)
+            if (unitOfMeasure != null)
             {
-                return Ok(unitOfMeasures);
+                return Ok(unitOfMeasure);
             }
 
             return NotFound();
         }
 
         [HttpPost]
-        public IActionResult Create(UnitOfMeasure unitOfMeasure)
+        public async Task<IActionResult> CreateAsync(UnitOfMeasureDto unitOfMeasure)
         {
             if (this.ModelState.IsValid)
             {
-                var created = _unitOfMeasureRepository.Create(unitOfMeasure);
+                var created = await _unitOfMeasureService.CreateAsync(unitOfMeasure);
+
                 return Ok(created);
             }
 
@@ -56,7 +58,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, UnitOfMeasure unitOfMeasure)
+        public async Task<IActionResult> UpdateAsync(int id, UnitOfMeasureDto unitOfMeasure)
         {
             if (this.ModelState.IsValid)
             {
@@ -65,7 +67,8 @@ namespace ProgrammingClass2.Angular.Controllers
                     return BadRequest();
                 }
 
-                var updated = _unitOfMeasureRepository.Update(unitOfMeasure);
+                var updated = await _unitOfMeasureService.UpdateAsync(unitOfMeasure);
+
                 return Ok(updated);
             }
 
@@ -73,9 +76,9 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var deleted = _unitOfMeasureRepository.Delete(id);
+            var deleted = await _unitOfMeasureService.DeleteAsync(id);
 
             if (deleted != null)
             {

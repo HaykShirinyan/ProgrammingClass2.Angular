@@ -9,14 +9,14 @@ namespace ProgrammingClass2.Angular.Repositories.Definitions
     public interface IUnitOfMeasureRepository
     {
         // Es function vernagirn a. Sranc aveli konkret asum en function signature.
-        List<UnitOfMeasure> GetAllUnitOfMeasures();
+        Task<List<UnitOfMeasure>> GetAllAsync();
 
-        UnitOfMeasure Get(int id);
+        Task<UnitOfMeasure> GetAsync(int id);
 
-        UnitOfMeasure Create(UnitOfMeasure unitOfMeasure);
+        Task<UnitOfMeasure> CreateAsync(UnitOfMeasure unitOfMeasure);
 
-        UnitOfMeasure Update(UnitOfMeasure unitOfMeasure);
+        Task<UnitOfMeasure> UpdateAsync(UnitOfMeasure unitOfMeasure);
 
-        UnitOfMeasure Delete(int id);
+        Task<UnitOfMeasure> DeleteAsync(int id);
     }
 }
