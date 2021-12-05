@@ -12,7 +12,13 @@ namespace ProgrammingClass2.Angular.Mapping
     {
         public ProductProfile()
         {
-            CreateMap<Product, ProductDto>()
+            CreateMap<Product, ProductDto>();
+
+            CreateMap<ProductDto, Product>()
+                .ForMember(p => p.UnitOfMeasure, options => options.Ignore())
+                .ForMember(p => p.UnitOfMeasureId, options => options.MapFrom(p => p.UnitOfMeasure.Id));
+
+            CreateMap<Product, ReferencedProductDto>()
                 .ReverseMap();
         }
     }

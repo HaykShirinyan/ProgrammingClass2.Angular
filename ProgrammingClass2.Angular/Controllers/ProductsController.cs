@@ -57,7 +57,7 @@ namespace ProgrammingClass2.Angular.Controllers
                 return Ok(created);
             }
 
-            // BadRequest(ModelState) het enq veradardznum erb ModelStat valid chi.
+            // BadRequest(ModelState) het enq veradardznum erb ModelState valid chi.
             // Aysinqn erb validaiton-i error-ner kan.
             return BadRequest(ModelState);
         }

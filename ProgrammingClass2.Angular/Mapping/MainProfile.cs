@@ -14,6 +14,20 @@ namespace ProgrammingClass2.Angular.Mapping
         {
             CreateMap<UnitOfMeasure, UnitOfMeasureDto>();
             CreateMap<UnitOfMeasureDto, UnitOfMeasure>();
+
+            CreateMap<UnitOfMeasure, ReferencedUnitOfMeasureDto>()
+                .ReverseMap();
+
+            CreateMap<Category, ReferencedCategoryDto>()
+                .ReverseMap();
+
+            CreateMap<ProductCategory, ProductCategoryDto>();
+
+            CreateMap<ProductCategoryDto, ProductCategory>()
+                .ForMember(c => c.Product, options => options.Ignore())
+                .ForMember(c => c.ProductId, options => options.MapFrom(c => c.Product.Id))
+                .ForMember(c => c.Category, options => options.Ignore())
+                .ForMember(c => c.CategoryId, options => options.MapFrom(c => c.Category.Id));
         }
     }
 }

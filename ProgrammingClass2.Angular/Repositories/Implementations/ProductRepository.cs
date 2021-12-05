@@ -20,14 +20,18 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
 
         public async Task<List<Product>> GetAllAsync()
         {
-            return await _context.Products.ToListAsync();
+            return await _context
+                .Products
+                .Include(p => p.UnitOfMeasure)
+                .ToListAsync();
         }
 
         public async Task<Product> GetAsync(int id)
         {
             return await _context
                 .Products
-                .FindAsync(id);
+                .Include(p => p.UnitOfMeasure)
+                .SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Product> CreateAsync(Product product)

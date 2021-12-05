@@ -21,6 +21,16 @@ namespace ProgrammingClass2.Angular.DataTransferObjects
 
         public decimal UnitPrice { get; set; }
 
-        public UnitOfMeasureDto UnitOfMeasure { get; set; }
+        public ReferencedUnitOfMeasureDto UnitOfMeasure { get; set; }
+    }
+
+    public class ReferencedProductDto
+    {
+        [Required]
+        public int? Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
     }
 }

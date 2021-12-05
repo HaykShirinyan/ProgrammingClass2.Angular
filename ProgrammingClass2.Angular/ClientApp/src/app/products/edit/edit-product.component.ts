@@ -82,8 +82,12 @@ export class EditProductComponent implements OnInit {
         this.isLoading = true;
 
         await this._productCategoryService.add({
-          productId: this.product.id,
-          categoryId: this.selectedCategory
+          product: {
+            id: this.product.id
+          },
+          category: {
+            id: this.selectedCategory
+          }
         });
 
         this.productCategories = await this._productCategoryService.getAll(this.product.id);
@@ -99,13 +103,27 @@ export class EditProductComponent implements OnInit {
       this.isLoading = true;
 
       await this._productCategoryService.delete({
-        productId: this.product.id,
-        categoryId: categoryId
+        product: {
+          id: this.product.id
+        },
+        category: {
+          id: categoryId
+        }
       });
 
       this.productCategories = await this._productCategoryService.getAll(this.product.id);
     } finally {
       this.isLoading = false;
+    }
+  }
+
+  public unitOfMeasureSelected(value: number): void {
+    if (value) {
+      this.product.unitOfMeasure = {
+        id: value
+      };
+    } else {
+      this.product.unitOfMeasure = null;
     }
   }
 }
