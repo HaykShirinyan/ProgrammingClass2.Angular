@@ -54,7 +54,7 @@ namespace ProgrammingClass2.Angular.Controllers
                     return BadRequest();
                 }
 
-                var added = await _productCategoryRepository.AddAsync(productCategory);
+                var added = await _productCategoryRepository.CreateAsync(productCategory);
                 return Ok(added);
             }
 

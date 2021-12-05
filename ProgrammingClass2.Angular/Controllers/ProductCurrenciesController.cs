@@ -54,7 +54,7 @@ namespace ProgrammingClass2.Angular.Controllers
                     return BadRequest();
                 }
 
-                var added = await _productCurrencyRepository.AddAsync(productCurrency);
+                var added = await _productCurrencyRepository.CreateAsync(productCurrency);
                 return Ok(added);
             }
 

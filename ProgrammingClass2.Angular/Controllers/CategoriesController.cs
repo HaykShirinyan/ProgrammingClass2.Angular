@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProgrammingClass2.Angular.Models;
-using ProgrammingClass2.Angular.Repositories.Definitions;
+using ProgrammingClass2.Angular.DataTransferObjects;
+using ProgrammingClass2.Angular.Services.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,25 +15,25 @@ namespace ProgrammingClass2.Angular.Controllers
     [Authorize]
     public class CategoriesController : ControllerBase
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryService _categoryService;
 
-        public CategoriesController(ICategoryRepository categoryRepository)
+        public CategoriesController(ICategoryService categoryRepository)
         {
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryRepository;
         }
 
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync()
         {
-            var categories = await _categoryRepository.GetAllAsync();
+            var categories = await _categoryService.GetAllAsync();
             return Ok(categories);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var category = await _categoryRepository.GetAsync(id);
+            var category = await _categoryService.GetAsync(id);
 
             if (category == null)
             {
@@ -44,11 +44,11 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsync(Category category)
+        public async Task<IActionResult> AddAsync(CategoryDto category)
         {
             if (this.ModelState.IsValid)
             {
-                var added = await _categoryRepository.AddAsync(category);
+                var added = await _categoryService.CreateAsync(category);
                 return Ok(added);
             }
 
@@ -56,7 +56,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, Category category)
+        public async Task<IActionResult> UpdateAsync(int id, CategoryDto category)
         {
             if (this.ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace ProgrammingClass2.Angular.Controllers
                     return BadRequest();
                 }
 
-                var updated = await _categoryRepository.UpdateAsync(category);
+                var updated = await _categoryService.UpdateAsync(category);
                 return Ok(updated);
             }
 
@@ -75,7 +75,7 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var deleted = await _categoryRepository.DeleteAsync(id);
+            var deleted = await _categoryService.DeleteAsync(id);
 
             if (deleted == null)
             {

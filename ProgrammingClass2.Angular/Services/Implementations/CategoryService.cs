@@ -80,5 +80,3 @@ namespace ProgrammingClass2.Angular.Services.Implementations
         }
     }
 }
-}
-}
