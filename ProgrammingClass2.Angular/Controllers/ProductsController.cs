@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProgrammingClass2.Angular.Data;
-using ProgrammingClass2.Angular.Models;
+using ProgrammingClass2.Angular.DataTransferObjects;
+using ProgrammingClass2.Angular.Services.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,31 +17,27 @@ namespace ProgrammingClass2.Angular.Controllers
     [Authorize]
     public class ProductsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IProductService _productService;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(IProductService productService)
         {
-            _context = context;
+            _productService = productService;
         }
 
         // /api/products
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Index()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var products = _context
-                .Products
-                .Include(p => p.UnitOfMeasure)
-                .ToList();
-
+            var products = await _productService.GetAllAsync();
             return Ok(products);
         }
 
         // /api/products/45
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var product = _context.Products.Find(id);
+            var product = await _productService.GetAsync(id);
 
             if (product != null)
             {
@@ -53,14 +49,12 @@ namespace ProgrammingClass2.Angular.Controllers
 
         // /api/products
         [HttpPost]
-        public IActionResult Create(Product product)
+        public async Task<IActionResult> CreateAsync(ProductDto product)
         {
             if (ModelState.IsValid)
             {
-                _context.Products.Add(product);
-                _context.SaveChanges();
-
-                return Ok(product);
+                var created = await _productService.CreateAsync(product);
+                return Ok(created);
             }
 
             // BadRequest(ModelState) het enq veradardznum erb ModelStat valid chi.
@@ -71,7 +65,7 @@ namespace ProgrammingClass2.Angular.Controllers
         // HttpPut ogtagorcum en update anenlu hamar.
         // /api/products/45
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Product product)
+        public async Task<IActionResult> UpdateAsync(int id, ProductDto product)
         {
             if (ModelState.IsValid)
             {
@@ -80,10 +74,9 @@ namespace ProgrammingClass2.Angular.Controllers
                     return BadRequest();
                 }
 
-                _context.Products.Update(product);
-                _context.SaveChanges();
+                var updated = await _productService.UpdateAsync(product);
 
-                return Ok(product);
+                return Ok(updated);
             }
 
             // BadRequest(ModelState) het enq veradardznum erb ModelStat valid chi.
@@ -93,16 +86,13 @@ namespace ProgrammingClass2.Angular.Controllers
 
         // /api/products/45
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var product = _context.Products.Find(id);
+            var deleted = await _productService.DeleteAsync(id);
 
-            if (product != null)
-            {
-                _context.Products.Remove(product);
-                _context.SaveChanges();
-
-                return Ok(product);
+            if (deleted != null)
+            {               
+                return Ok(deleted);
             }
 
             return NotFound();

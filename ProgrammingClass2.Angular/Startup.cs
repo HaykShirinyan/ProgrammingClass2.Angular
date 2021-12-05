@@ -60,9 +60,11 @@ namespace ProgrammingClass2.Angular
             services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
 
             // Aystex el kgrancenq service-nere
             services.AddTransient<IUnitOfMeasureService, UnitOfMeasureService>();
+            services.AddTransient<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
