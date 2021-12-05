@@ -12,7 +12,7 @@ namespace ProgrammingClass2.Angular.Repositories.Definitions
 
         Task<ProductCurrency> GetAsync(int productId, int currencyId);
 
-        Task<ProductCurrency> AddAsync(ProductCurrency productCurrency);
+        Task<ProductCurrency> CreateAsync(ProductCurrency productCurrency);
 
         Task<ProductCurrency> DeleteAsync(int productId, int currencyId);
     }

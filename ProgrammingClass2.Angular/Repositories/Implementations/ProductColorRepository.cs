@@ -36,7 +36,7 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
                 .SingleOrDefaultAsync(p => p.ProductId == productId && p.ColorId == colorId);
         }
 
-        public async Task<ProductColor> AddAsync(ProductColor productColor)
+        public async Task<ProductColor> CreateAsync(ProductColor productColor)
         {
             _context.ProductColors.Add(productColor);
             await _context.SaveChangesAsync();

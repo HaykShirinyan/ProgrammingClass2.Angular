@@ -8,14 +8,14 @@ namespace ProgrammingClass2.Angular.Repositories.Definitions
 {
     public interface IProductTypeRepository
     {
-        List<ProductType> GetAllProductTypes();
+        Task<List<ProductType>> GetAllAsync();
 
-        ProductType Get(int id);
+        Task<ProductType> GetAsync(int id);
 
-        ProductType Create(ProductType productType);
+        Task<ProductType> CreateAsync(ProductType productType);
 
-        ProductType Update(ProductType productType);
+        Task<ProductType> UpdateAsync(ProductType productType);
 
-        ProductType Delete(int id);
+        Task<ProductType> DeleteAsync(int id);
     }
 }

@@ -68,6 +68,10 @@ namespace ProgrammingClass2.Angular
 
             //Aystex el kgrancenq service-nere
             services.AddTransient<IUnitOfMeasureService, UnitOfMeasureService>();
+            services.AddTransient<IColorService, ColorService>();
+            services.AddTransient<ICurrencyService, CurrencyService>();
+            services.AddTransient<IProductTypeService, ProductTypeService>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

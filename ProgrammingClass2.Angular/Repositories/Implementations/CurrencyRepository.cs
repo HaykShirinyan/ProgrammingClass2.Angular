@@ -30,7 +30,7 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
                 .FindAsync(id);
         }
 
-        public async Task<Currency> AddAsync(Currency currency)
+        public async Task<Currency> CreateAsync(Currency currency)
         {
             _context.Currencies.Add(currency);
             await _context.SaveChangesAsync();

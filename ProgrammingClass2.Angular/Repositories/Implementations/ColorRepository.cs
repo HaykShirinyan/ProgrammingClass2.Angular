@@ -30,7 +30,7 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
                 .FindAsync(id);
         }
 
-        public async Task<Color> AddAsync(Color color)
+        public async Task<Color> CreateAsync(Color color)
         {
             _context.Colors.Add(color);
             await _context.SaveChangesAsync();

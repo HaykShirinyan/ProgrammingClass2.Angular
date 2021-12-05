@@ -14,6 +14,21 @@ namespace ProgrammingClass2.Angular.Mapping
         {
             CreateMap<UnitOfMeasure, UnitOfMeasureDto>();
             CreateMap<UnitOfMeasureDto, UnitOfMeasure>();
+
+            CreateMap<Color, ColorDto>();
+            CreateMap<ColorDto, Color>();
+
+            CreateMap<Category, CategoryDto>();
+            CreateMap<CategoryDto, Category>();
+
+            CreateMap<Currency, CurrencyDto>();
+            CreateMap<CurrencyDto, Currency>();
+
+            CreateMap<Product, ProductDto>();
+            CreateMap<ProductDto, Product>();
+
+            CreateMap<ProductType, ProductTypeDto>();
+            CreateMap<ProductTypeDto, ProductType>();
         }
     }
 }

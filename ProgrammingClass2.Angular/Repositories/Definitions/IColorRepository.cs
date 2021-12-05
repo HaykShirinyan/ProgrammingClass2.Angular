@@ -12,7 +12,7 @@ namespace ProgrammingClass2.Angular.Repositories.Definitions
 
         Task<Color> GetAsync(int id);
 
-        Task<Color> AddAsync(Color color);
+        Task<Color> CreateAsync(Color color);
 
         Task<Color> UpdateAsync(Color color);
 

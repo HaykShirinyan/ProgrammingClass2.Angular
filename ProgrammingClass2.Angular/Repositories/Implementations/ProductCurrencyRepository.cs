@@ -36,7 +36,7 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
                 .SingleOrDefaultAsync(p => p.ProductId == productId && p.CurrencyId == currencyId);
         }
 
-        public async Task<ProductCurrency> AddAsync(ProductCurrency productCurrency)
+        public async Task<ProductCurrency> CreateAsync(ProductCurrency productCurrency)
         {
             _context.ProductCurrencies.Add(productCurrency);
             await _context.SaveChangesAsync();

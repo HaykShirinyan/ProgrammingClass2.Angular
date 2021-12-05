@@ -31,7 +31,7 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
                 .FindAsync(id);
         }
 
-        public async Task<Category> AddAsync(Category category)
+        public async Task<Category> CreateAsync(Category category)
         {
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();

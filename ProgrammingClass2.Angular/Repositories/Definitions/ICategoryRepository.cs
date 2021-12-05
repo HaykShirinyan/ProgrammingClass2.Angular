@@ -12,7 +12,7 @@ namespace ProgrammingClass2.Angular.Repositories.Definitions
 
         Task<Category> GetAsync(int id);
 
-        Task<Category> AddAsync(Category category);
+        Task<Category> CreateAsync(Category category);
 
         Task<Category> UpdateAsync(Category category);
 

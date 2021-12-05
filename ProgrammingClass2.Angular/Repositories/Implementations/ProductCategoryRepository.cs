@@ -36,7 +36,7 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
                 .SingleOrDefaultAsync(p => p.ProductId == productId && p.CategoryId == categoryId);
         }
 
-        public async Task<ProductCategory> AddAsync(ProductCategory productCategory)
+        public async Task<ProductCategory> CreateAsync(ProductCategory productCategory)
         {
             _context.ProductCategories.Add(productCategory);
             await _context.SaveChangesAsync();
