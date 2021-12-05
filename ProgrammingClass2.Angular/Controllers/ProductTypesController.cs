@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
+using ProgrammingClass2.Angular.Services.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,24 +16,24 @@ namespace ProgrammingClass2.Angular.Controllers
     [ApiController]
     public class ProductTypesController : ControllerBase
     {
-        private readonly IProductTypeRepository _productTypeRepository;
+        private readonly IProductTypeService _productTypeService;
 
-        public ProductTypesController(IProductTypeRepository productTypeRepository) 
+        public ProductTypesController(IProductTypeService productTypeService) 
         {
-            _productTypeRepository = productTypeRepository;
+            _productTypeService = productTypeService;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var productType = _productTypeRepository.GetAllProductTypes();
+            var productType = await _productTypeService.GetAllProductTypesAsync();
             return Ok(productType);
         }
 
         [HttpGet("{id}")] 
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var productTypes = _productTypeRepository.Get(id);
+            var productTypes = await _productTypeService.GetAsync(id);
 
             if (productTypes != null )
             {
@@ -42,11 +44,11 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ProductType productType)
+        public async Task<IActionResult> CreateAsync(ProductType productType)
         {
             if (ModelState.IsValid)
             {
-                var created = _productTypeRepository.Create(productType);
+                var created = await _productTypeService.CreateAsync(productType);
 
                 return Ok(created);
             }
@@ -55,7 +57,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, ProductType productType)
+        public async Task<IActionResult> UpdateAsync(int id, ProductType productType)
         {
             if (ModelState.IsValid)
             {
@@ -63,8 +65,7 @@ namespace ProgrammingClass2.Angular.Controllers
                 {
                     return BadRequest();
                 }
-                var updated = _productTypeRepository.Update(productType);
-
+                var updated = await _productTypeService.UpdateAsync(productType);
 
                 return Ok(updated);
             }
@@ -72,9 +73,9 @@ namespace ProgrammingClass2.Angular.Controllers
         }
         
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var deleted = _productTypeRepository.Delete(id);
+            var deleted = await _productTypeService.DeleteAsync(id); 
 
             if (deleted != null)
             {

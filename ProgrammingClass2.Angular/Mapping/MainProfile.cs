@@ -14,6 +14,9 @@ namespace ProgrammingClass2.Angular.Mapping
         {
             CreateMap<UnitOfMeasure, UnitOfMeasureDto>();
             CreateMap<UnitOfMeasureDto, UnitOfMeasure>();
+
+            CreateMap<ProductType, ProductTypeDto>();
+            CreateMap<ProductTypeDto, ProductType>();
         }
     }
 }

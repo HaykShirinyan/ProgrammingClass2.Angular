@@ -1,4 +1,5 @@
-﻿using ProgrammingClass2.Angular.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ProgrammingClass2.Angular.Data;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
 using System;
@@ -17,45 +18,43 @@ namespace ProgrammingClass2.Angular.Repositories.Implementations
             _context = context;
         }
 
-        public List<ProductType> GetAllProductTypes()
+        public Task<List<ProductType>> GetAllProductTypesAsync()
         {
-            return _context.ProductTypes.ToList();
-
+            return _context.ProductTypes.ToListAsync();
         }
 
-        public ProductType Create(ProductType productType)
+        public async Task<ProductType> CreateAsync(ProductType productType)
         {
             _context.ProductTypes.Add(productType);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return productType;
         }
 
-        public ProductType Get(int id)
+        public Task<ProductType> GetAsyncint(int id)
         {
-            return _context.ProductTypes.Find(id);
+            return _context.ProductTypes.SingleOrDefaultAsync(p => p.Id == id);
         }
 
-        public ProductType Update(ProductType productType)
+        public async Task<ProductType> UpdateAsync(ProductType productType)
         {
             _context.ProductTypes.Update(productType);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return productType;
         }
 
-        public ProductType Delete(int id)
+        public async Task<ProductType> DeleteAsync(int id)
         {
-            var productType = Get(id);
+            var productType = await GetAsyncint(id);
             
             if (productType != null)
             {
                 _context.ProductTypes.Remove(productType);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 return productType;
             }
-
             return null;
         }
     }

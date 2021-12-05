@@ -63,6 +63,7 @@ namespace ProgrammingClass2.Angular
 
             // Aystex el kgrancenq service-nere
             services.AddTransient<IUnitOfMeasureService, UnitOfMeasureService>();
+            services.AddTransient<IProductTypeService, ProductTypeService>();
 
             services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
