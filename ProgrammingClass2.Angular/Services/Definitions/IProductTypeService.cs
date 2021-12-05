@@ -1,4 +1,5 @@
 ﻿using ProgrammingClass2.Angular.DataTransferObjects;
+using ProgrammingClass2.Angular.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace ProgrammingClass2.Angular.Services.Definitions
         Task<ProductTypeDto> UpdateAsync(ProductTypeDto dto);
 
         Task<ProductTypeDto> DeleteAsync(int id);
+        Task CreateAsync(ProductType productType);
     }
 }

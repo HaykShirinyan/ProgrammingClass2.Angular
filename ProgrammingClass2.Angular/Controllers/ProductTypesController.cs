@@ -1,9 +1,8 @@
-﻿using AutoMapper;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProgrammingClass2.Angular.Data;
+using ProgrammingClass2.Angular.DataTransferObjects;
 using ProgrammingClass2.Angular.Models;
-using ProgrammingClass2.Angular.Repositories.Definitions;
 using ProgrammingClass2.Angular.Services.Definitions;
 using System;
 using System.Collections.Generic;
@@ -46,7 +45,7 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(ProductType productType)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 var created = await _productTypeService.CreateAsync(productType);
 
@@ -59,7 +58,7 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, ProductType productType)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
                 if (id != productType.Id)
                 {
