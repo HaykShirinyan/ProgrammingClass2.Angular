@@ -37,6 +37,7 @@ namespace ProgrammingClass2.Angular.Services.Implementations
             {
                 return _mapper.Map<ProductTypeDto>(model);
             }
+
             return null;
         } 
 
@@ -49,6 +50,7 @@ namespace ProgrammingClass2.Angular.Services.Implementations
             {
                 return _mapper.Map<ProductTypeDto>(created);
             }
+
             return null;
         }
 
@@ -61,6 +63,7 @@ namespace ProgrammingClass2.Angular.Services.Implementations
             {
                 return _mapper.Map<ProductTypeDto>(updated);
             }
+
             return null;
         }
 
@@ -72,6 +75,7 @@ namespace ProgrammingClass2.Angular.Services.Implementations
             {
                 return _mapper.Map<ProductTypeDto>(deleted);
             }
+
             return null;
         }
     }

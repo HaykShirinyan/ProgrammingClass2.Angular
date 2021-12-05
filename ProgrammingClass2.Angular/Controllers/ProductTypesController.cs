@@ -43,7 +43,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(ProductType productType)
+        public async Task<IActionResult> CreateAsync(ProductTypeDto productType)
         {
             if (this.ModelState.IsValid)
             {
@@ -56,7 +56,7 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, ProductType productType)
+        public async Task<IActionResult> UpdateAsync(int id, ProductTypeDto productType)
         {
             if (this.ModelState.IsValid)
             {
