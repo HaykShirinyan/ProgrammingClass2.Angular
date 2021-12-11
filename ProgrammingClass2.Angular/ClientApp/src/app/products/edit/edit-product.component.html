@@ -92,7 +92,8 @@
       <select id="product-uom"
               name="uom"
               class="form-control"
-              [(ngModel)]="product.unitOfMeasureId">
+              [ngModel]="product.unitOfMeasure?.id"
+              (ngModelChange)="unitOfMeasureSelected($event)">
         <option value="">-- Please Select --</option>
 
         <option *ngFor="let uom of unitOfMeasures" [value]="uom.id">

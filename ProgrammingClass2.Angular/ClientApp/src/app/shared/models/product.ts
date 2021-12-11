@@ -9,7 +9,6 @@ export interface Product {
   quantity?: number;
   unitPrice?: number;
 
-  unitOfMeasureId?: number;
   unitOfMeasure?: UnitOfMeasure;
 
   productTypeId?: number;

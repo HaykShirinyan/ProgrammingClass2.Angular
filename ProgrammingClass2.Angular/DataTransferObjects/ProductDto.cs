@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProgrammingClass2.Angular.DataTransferObjects
 {
-    public class UnitOfMeasureDto
+    public class ProductDto
     {
         public int Id { get; set; }
 
@@ -16,9 +16,15 @@ namespace ProgrammingClass2.Angular.DataTransferObjects
 
         [StringLength(300)]
         public string Description { get; set; }
+
+        public int Quantity { get; set; }
+
+        public decimal UnitPrice { get; set; }
+
+        public ReferencedUnitOfMeasureDto UnitOfMeasure { get; set; }
     }
 
-    public class ReferencedUnitOfMeasureDto
+    public class ReferencedProductDto
     {
         [Required]
         public int? Id { get; set; }

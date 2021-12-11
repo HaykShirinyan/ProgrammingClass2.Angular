@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProgrammingClass2.Angular.DataTransferObjects;
 using ProgrammingClass2.Angular.Models;
 using ProgrammingClass2.Angular.Repositories.Definitions;
+using ProgrammingClass2.Angular.Services.Definitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,24 +16,24 @@ namespace ProgrammingClass2.Angular.Controllers
     [ApiController]
     public class ProductCategoriesController : ControllerBase
     {
-        private readonly IProductCategoryRepository _productCategoryRepository;
+        private readonly IProductCategoryService _productCategoryService;
 
-        public ProductCategoriesController(IProductCategoryRepository productCategoryRepository)
+        public ProductCategoriesController(IProductCategoryService productCategoryService)
         {
-            _productCategoryRepository = productCategoryRepository;
+            _productCategoryService = productCategoryService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(int productId)
         {
-            var productCategories = await _productCategoryRepository.GetAllAsync(productId);
+            var productCategories = await _productCategoryService.GetAllAsync(productId);
             return Ok(productCategories);
         }
 
         [HttpGet("{categoryId}")]
         public async Task<IActionResult> GetAsync(int productId, int categoryId)
         {
-            var productCategory = await _productCategoryRepository.GetAsync(productId, categoryId);
+            var productCategory = await _productCategoryService.GetAsync(productId, categoryId);
 
             if (productCategory != null)
             {
@@ -42,16 +44,16 @@ namespace ProgrammingClass2.Angular.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsync(int productId, ProductCategory productCategory)
+        public async Task<IActionResult> AddAsync(int productId, ProductCategoryDto productCategory)
         {
             if (this.ModelState.IsValid)
             {
-                if (productId != productCategory?.ProductId)
+                if (productId != productCategory?.Product?.Id)
                 {
                     return BadRequest();
                 }
 
-                var added = await _productCategoryRepository.AddAsync(productCategory);
+                var added = await _productCategoryService.AddAsync(productCategory);
                 return Ok(added);
             }
 
@@ -61,7 +63,7 @@ namespace ProgrammingClass2.Angular.Controllers
         [HttpDelete("{categoryId}")]
         public async Task<IActionResult> DeleteAsync(int productId, int categoryId)
         {
-            var deleted = await _productCategoryRepository.DeleteAsync(productId, categoryId);
+            var deleted = await _productCategoryService.DeleteAsync(productId, categoryId);
 
             if (deleted != null)
             {

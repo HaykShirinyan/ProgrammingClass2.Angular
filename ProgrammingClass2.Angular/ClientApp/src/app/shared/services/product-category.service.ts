@@ -20,13 +20,13 @@ export class ProductCategoryService {
 
   public async add(productCategory: ProductCategory): Promise<ProductCategory> {
     return await this._http
-      .post<ProductCategory>('api/products/' + productCategory.productId + '/categories', productCategory)
+      .post<ProductCategory>('api/products/' + productCategory.product.id + '/categories', productCategory)
       .toPromise();
   }
 
   public async delete(productCategory: ProductCategory): Promise<ProductCategory> {
     return await this._http
-      .delete<ProductCategory>('api/products/' + productCategory.productId + '/categories/' + productCategory.categoryId)
+      .delete<ProductCategory>('api/products/' + productCategory.product.id + '/categories/' + productCategory.category.id)
       .toPromise();
   }
 }

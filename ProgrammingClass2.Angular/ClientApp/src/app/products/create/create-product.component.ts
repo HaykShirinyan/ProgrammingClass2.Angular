@@ -48,4 +48,14 @@ export class CreateProductComponent implements OnInit {
       this._router.navigate(['products']);
     }
   }
+
+  public unitOfMeasureSelected(value: number): void {
+    if (value) {
+      this.product.unitOfMeasure = {
+        id: value
+      };
+    } else {
+      this.product.unitOfMeasure = null;
+    }
+  }
 }
